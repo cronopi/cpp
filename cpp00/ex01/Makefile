@@ -1,9 +1,9 @@
 RM = rm -f
 
 CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = crappy
-SRC = contact.cpp phonebook.cpp
+FLAGS = -Wall -Wextra -Werror
+NAME = agenda
+SRC = main.cpp Phonebook.cpp Contact.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
