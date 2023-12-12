@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 16:51:39 by roberto           #+#    #+#             */
-/*   Updated: 2023/12/09 16:57:19 by roberto          ###   ########.fr       */
+/*   Updated: 2023/12/12 15:47:58 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@ Zombie::~Zombie()
 {
 }
 
-Zombie::Zombie(std::string name)
+Zombie::Zombie()
+{
+}
+
+void	Zombie::name(std::string name)
 {
 	this->_name = name;
 }
