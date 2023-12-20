@@ -5,24 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/09 16:27:01 by roberto           #+#    #+#             */
-/*   Updated: 2023/12/16 11:16:00 by roberto          ###   ########.fr       */
+/*   Created: 2023/12/17 23:24:44 by roberto           #+#    #+#             */
+/*   Updated: 2023/12/19 14:10:32 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Fixed.hpp"
 
-int	main(void)
+int main(void)
 {
-	Zombie	*horde;
-	int i = 0;
+	Fixed a;
+	Fixed const b( 10 );
+	Fixed const c( 42.42f );
+	Fixed const d( b );
 
-	horde = zombieHorde(3, "for the horde!");
-	while (i < 3)
-	{
-		horde[i].announce();
-		i++;
-	}
-	delete [] horde;
+	a = Fixed( 1234.4321f );
+
+	std::cout << "a is " << a << std::endl;
+	std::cout << "b is " << b << std::endl;
+	std::cout << "c is " << c << std::endl;
+	std::cout << "d is " << d << std::endl;
+
+	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
+	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
+	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
+	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+
 	return (0);
-}
+};

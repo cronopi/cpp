@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:15:04 by roberto           #+#    #+#             */
-/*   Updated: 2023/12/12 16:49:31 by roberto          ###   ########.fr       */
+/*   Updated: 2023/12/16 11:20:56 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,11 @@ class	Zombie
 		std::string	_name;
 	public:
 		void	announce( void );
-		void	name(std::string name);
+		void	setname(std::string name);
 		//constructor
 		Zombie();
 		//destructor
 		~Zombie();
 };
-	Zombie *newZombie(std::string name);
 	Zombie* zombieHorde( int N, std::string name );
 #endif

@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/09 16:51:39 by roberto           #+#    #+#             */
-/*   Updated: 2023/12/16 11:20:59 by roberto          ###   ########.fr       */
+/*   Created: 2023/12/14 13:16:08 by roberto           #+#    #+#             */
+/*   Updated: 2023/12/16 12:13:03 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "HumanB.hpp"
 
-Zombie::~Zombie()
+HumanB::HumanB()
 {
 }
 
-Zombie::Zombie()
+HumanB::~HumanB()
 {
 }
 
-void	Zombie::setname(std::string name)
+HumanB::HumanB(std::string name) : _name(name)
 {
-	this->_name = name;
 }
 
-void	Zombie::announce( void )
+void HumanB::setWeapon(Weapon &new_weapon)
 {
-	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	this->_weapon = &new_weapon;
+}
+
+void HumanB::attack( void )
+{
+	if (this->_weapon != NULL)
+	{
+		std::cout << this->_name << " attacks with his " << this->_weapon->getType() << std::endl;
+	}
+	else
+		std::cout << this->_name << " you don't have a weapon" << std::endl;
 }
