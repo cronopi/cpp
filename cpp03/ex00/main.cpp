@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 03:33:25 by roberto           #+#    #+#             */
-/*   Updated: 2023/12/19 19:45:21 by roberto          ###   ########.fr       */
+/*   Updated: 2023/12/20 16:15:23 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,15 @@ int	main(void)
 	claptrap2.beRepaired(3);
 	claptrap2.beRepaired(18);
 
+
+
 	claptrap2.attack(s1);
 	claptrap1.takeDamage(9);
 	claptrap2.attack(s1);
 	claptrap1.takeDamage(9);
 	claptrap2.attack(s1);
+
+
 
 	claptrap1.beRepaired(3);
 	claptrap1.beRepaired(64);

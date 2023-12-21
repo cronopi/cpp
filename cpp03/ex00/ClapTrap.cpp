@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 16:57:26 by roberto           #+#    #+#             */
-/*   Updated: 2023/12/20 15:41:52 by roberto          ###   ########.fr       */
+/*   Updated: 2023/12/20 18:02:01 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,14 @@ ClapTrap::ClapTrap( std::string name)
 
 ClapTrap::ClapTrap(const ClapTrap &src)
 {
-	std::string name;
+	std::string		name;
 	std::string		class_name;
 
 	class_name = this->get_class_name();
-	name = getName();
-
-	this->setName(name);
-	this->_attack_damage = this->get_class_attack_damage();
-	this->_energy_points = this->get_class_energy_points();
-	this->_hit_points = this->get_class_hp();
-	std::cout << class_name << " copy "  << this->_name << " has been created\n";
+	this->_hit_points = src._hit_points;
+	this->_energy_points = src._energy_points;
+	this->_attack_damage = src._attack_damage;
+	std::cout << class_name << " copy "  << this->_name << "created\n";
 }
 
 ClapTrap::~ClapTrap()
@@ -157,8 +154,8 @@ void ClapTrap::beRepaired(unsigned int amount)
 {
 	std::string class_name = this->get_class_name();
 	std::string name = this->_name;
-	int hp = this->get_class_hp();
-	int new_health;
+	unsigned int hp = this->get_class_hp();
+	unsigned int new_health;
 
 	if (this->_hit_points == 0)
 	{
@@ -171,14 +168,14 @@ void ClapTrap::beRepaired(unsigned int amount)
 		return ;
 	}
 	new_health = this->_hit_points + amount;
-	if (this->_hit_points >= hp)
+	if (new_health >= hp)
 	{
 		this->_hit_points = hp;
 		this->_energy_points -= 1;
 		std::cout << "ClapTrap " << name << "is fully healed!" << std::endl;
 		return ;
 	}
-	else if (this->_hit_points <= hp)
+	else if (new_health <= hp)
 	{
 		this->_hit_points = new_health;
 		this->_energy_points -= 1;
@@ -200,15 +197,14 @@ void ClapTrap::attack(const std::string& target)
 		std::cout << "ClapTrap " << this->_name << "can't attack because he has no energy points!" << std::endl;
 		return ;
 	}
+	this->_energy_points -= 1;
 	if (this->_attack_damage == 0)
 	{
-		std::cout << "ClapTrap " << this->_name << "can't attack because he has no attack damage!" << std::endl;
+		std::cout << "ClapTrap " << this->_name << "attack but deals no damage!" << std::endl;
 		return ;
 	}
-	this->_energy_points -= 1;
 	if(this->_attack_damage > 0)
 	{
-		std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << this->_attack_damage << " points of damage!" << std::endl;
+		std::cout << "ClapTrap " << this->_name << " attacks " << "ClapTrap " << target << ", causing " << this->_attack_damage << " points of damage!" << std::endl;
 	}
-	std::cout << "ClapTrap " << this->_name << "got attack by" << /*target"  <<*/", taking points of health!" << std::endl;
 }
