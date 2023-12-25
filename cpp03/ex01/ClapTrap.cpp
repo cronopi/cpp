@@ -6,13 +6,17 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 16:57:26 by roberto           #+#    #+#             */
-/*   Updated: 2023/12/22 13:34:25 by roberto          ###   ########.fr       */
+/*   Updated: 2023/12/22 13:33:58 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 // Constructor and destructor
+
+ClapTrap::ClapTrap()
+{
+}
 
 ClapTrap::ClapTrap( std::string name )
 {
@@ -34,14 +38,13 @@ ClapTrap::ClapTrap(const ClapTrap &src)
 	this->_energy_points = src._energy_points;
 	this->_attack_damage = src._attack_damage;
 	this->_max_hit_points =src._max_hit_points;
-	this->_max_hit_points = 10;
 
 	std::cout << "ClapTrap " << " copy "  << this->_name << "created!\n";
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap" << this->getName() << "destroyed\n";
+	std::cout << "ClapTrap " << this->getName() << " destroyed\n";
 }
 //getters
 std::string ClapTrap::getName(void)

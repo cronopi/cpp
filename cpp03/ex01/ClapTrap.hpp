@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 03:32:24 by roberto           #+#    #+#             */
-/*   Updated: 2023/12/21 13:38:38 by roberto          ###   ########.fr       */
+/*   Updated: 2023/12/22 13:12:58 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 class ClapTrap
 {
-	private:
+	protected:
 		// propiedades específicas de cada uno
 		std::string		_name;
 		unsigned int	_hit_points;
