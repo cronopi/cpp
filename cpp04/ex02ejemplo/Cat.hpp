@@ -3,31 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/22 13:56:55 by roberto           #+#    #+#             */
-/*   Updated: 2023/12/29 14:08:18 by roberto          ###   ########.fr       */
+/*   Created: 2021/09/09 13:51:27 by miguel            #+#    #+#             */
+/*   Updated: 2021/09/09 16:22:02 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
+#ifndef __CAT_H__
+# define __CAT_H__
 
-# define CAT_HPP
-
+# include <string>
 # include "Animal.hpp"
-# include "Brain.hpp"
 
-class Cat : public Animal
-{
-	private:
+class	Cat : public Animal {
 
 	public:
-		Cat();
-		Cat(const Cat &copy);
-		~Cat();
-		Cat &operator=(const Cat &copy);
 
-		void makeSound() const;
+		Cat(void);
+		Cat(const Cat &animal);
+		~Cat(void);
+
+		Cat	&operator=(const Cat &animal);
+
+		void	makeSound(void) const;
 };
 
-# endif
+#endif

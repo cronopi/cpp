@@ -3,38 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/22 13:47:20 by roberto           #+#    #+#             */
-/*   Updated: 2023/12/29 14:04:43 by roberto          ###   ########.fr       */
+/*   Created: 2021/09/09 13:33:59 by miguel            #+#    #+#             */
+/*   Updated: 2021/09/09 19:57:10 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef __ANIMAL_H__
+# define __ANIMAL_H__
 
-# include <iostream>
 # include <string>
 # include "Brain.hpp"
 
-class Animal
-{
-	private:
-		Brain *brain;
+class	Animal {
+
 	protected:
-		std::string type;
+
+		std::string	_type;
+		Brain		*_brain;
 
 	public:
-		Animal();
+
+		Animal(void);
 		Animal(std::string type);
-		Animal(const Animal &copy);
-		virtual ~Animal();
-		Animal &operator=(const Animal &copy);
+		Animal(const Animal &animal);
+		virtual	~Animal(void);
 
-		virtual void makeSound() const;
-		std::string getType() const;
+		Animal	&operator=(const Animal &animal);
 
-		Brain	*getBrain(void) const;
+		const std::string	getType(void) const;
+		Brain				*getBrain(void) const;
+
+		virtual void	makeSound(void) const = 0;
 };
 
 #endif

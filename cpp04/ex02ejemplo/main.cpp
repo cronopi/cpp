@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/22 13:56:55 by roberto           #+#    #+#             */
-/*   Updated: 2023/12/29 14:08:18 by roberto          ###   ########.fr       */
+/*   Created: 2021/09/09 17:15:09 by miguel            #+#    #+#             */
+/*   Updated: 2021/09/09 20:02:05 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
+#include "Dog.hpp"
+#include "Cat.hpp"
 
-# define CAT_HPP
+int	main(void) {
 
-# include "Animal.hpp"
-# include "Brain.hpp"
+	Animal	*dog = new Dog();
 
-class Cat : public Animal
-{
-	private:
+	// Can not do this cause animal is abstract, it has a pure vitual member function
+	//Animal	*animal = new Animal();
 
-	public:
-		Cat();
-		Cat(const Cat &copy);
-		~Cat();
-		Cat &operator=(const Cat &copy);
+	delete dog;
 
-		void makeSound() const;
-};
-
-# endif
+	return (0);
+}
