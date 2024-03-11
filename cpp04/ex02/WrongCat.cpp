@@ -1,0 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/25 13:37:24 by roberto           #+#    #+#             */
+/*   Updated: 2023/12/25 13:55:34 by roberto          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "WrongCat.hpp"
+
+WrongCat::WrongCat()
+{
+	std::cout << "WrongCat constructor called" << std::endl;
+}
+
+void WrongCat::makeSound() const
+{
+	std::cout << "Woof Woof" << std::endl;
+}
+
+WrongCat::~WrongCat()
+{
+	std::cout << "WrongCat destructor called" << std::endl;
+}
