@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 10:13:47 by roberto           #+#    #+#             */
-/*   Updated: 2024/03/15 10:34:53 by roberto          ###   ########.fr       */
+/*   Updated: 2024/03/22 10:24:13 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <iostream>
 # include <string>
+
+#include "Form.hpp"
 
 class Bureaucrat
 {
@@ -42,6 +44,7 @@ class Bureaucrat
 
 		void increment();
 		void decrement();
+		void signForm(Aform &form) const;
 
 };
 		std::ostream &operator<<(std::ostream &out, const Bureaucrat &b);
