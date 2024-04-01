@@ -6,7 +6,7 @@
 /*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:39:28 by rcastano          #+#    #+#             */
-/*   Updated: 2024/04/01 16:00:40 by rcastano         ###   ########.fr       */
+/*   Updated: 2024/04/01 16:01:52 by rcastano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,4 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &s
 RobotomyRequestForm::RobotomyRequestForm(std::string target)
 {
 	std::cout << "RobotomyRequestForm Constructor for target " << target << " called" << std::endl; //no debe imprimirse
-
 }
