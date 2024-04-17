@@ -6,7 +6,7 @@
 /*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:03:45 by rcastano          #+#    #+#             */
-/*   Updated: 2024/04/16 15:37:29 by rcastano         ###   ########.fr       */
+/*   Updated: 2024/04/17 12:22:51 by rcastano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 # define SCALARCONVERTER_HPP
 
 #include <string>
+
+enum e_type
+{
+    INT,
+    FLOAT,
+    CHAR,
+    DOUBLE,
+};
 
 class ScalarConverter
 {
@@ -58,5 +66,8 @@ class ScalarConverter
 		void	PrintFloat(void) const;
 		void	PrintDouble(void) const;
 
-
+		bool	isImpossible( void );
+		void	convert( void );
 };
+
+#endif
