@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:03:45 by rcastano          #+#    #+#             */
-/*   Updated: 2024/04/26 11:29:07 by roberto          ###   ########.fr       */
+/*   Updated: 2024/04/22 10:53:43 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,14 @@
 # define SCALARCONVERTER_HPP
 
 #include <string>
-#include <iostream>
-#include <type_traits>
+
+enum e_type
+{
+    INT,
+    FLOAT,
+    CHAR,
+    DOUBLE,
+};
 
 class ScalarConverter
 {
@@ -24,7 +30,8 @@ class ScalarConverter
 		int		_i;
 		float	_f;
 		double	_d;
-
+		std::string	_str;
+		e_type	_type;
 
 	public:
 		ScalarConverter();
@@ -32,21 +39,35 @@ class ScalarConverter
 		ScalarConverter(ScalarConverter &src);
 		ScalarConverter &operator=(const ScalarConverter &src);
 
-		char	GetChar(void) const;
-		int		GetInt(void) const;
-		float	GetFloat(void) const;
-		double	GetDouble(void) const;
+		void	GetChar(void) const;
+		void	GetInt(void) const;
+		void	GetFloat(void) const;
+		void	GetDouble(void) const;
+		void	GetString(void) const;
 
-		static void convert(std::string literal);
+		char	SetChar(char c);
+		int		SetInt(int i);
+		float	SetFloat(float f);
+		double	SetDouble( double d);
+		std::string	SetString(std::string str);
+
+		void	GetType(void) const;
+		e_type	SetType();
+
+		bool	IsChar(void) const;
+		bool	Isint(void) const;
+		bool	IsFloat(void) const;
+		bool	IsDouble(void) const;
+
+		bool	PrintIsImposible(void) const;
+
+		void	Printchar(void) const;
+		void	Printint(void) const;
+		void	PrintFloat(void) const;
+		void	PrintDouble(void) const;
+
+		bool	isImpossible( void );
+		void	convert( void );
 };
-		bool	IsChar(std::string literal);
-		bool	Isint(std::string literal);
-		bool	IsFloat(std::string literal);
-		bool	IsDouble(std::string literal);
-
-		void	PrintChar(std::string literal);
-		void	PrintInt(std::string literal);
-		void	PrintFloat(std::string literal);
-		void	PrintDouble(std::string literal);
 
 #endif
