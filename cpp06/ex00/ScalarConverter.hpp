@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:03:45 by rcastano          #+#    #+#             */
-/*   Updated: 2024/04/26 11:29:07 by roberto          ###   ########.fr       */
+/*   Updated: 2024/05/01 16:18:21 by rcastano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 
 #include <string>
 #include <iostream>
-#include <type_traits>
+
+
+
 
 class ScalarConverter
 {
@@ -39,10 +41,11 @@ class ScalarConverter
 
 		static void convert(std::string literal);
 };
-		bool	IsChar(std::string literal);
-		bool	Isint(std::string literal);
-		bool	IsFloat(std::string literal);
-		bool	IsDouble(std::string literal);
+		int	IsChar(std::string literal);
+		int	IsInt(std::string literal);
+		int	IsFloat(std::string literal, int number);
+		int	IsDouble(std::string literal, int number);
+
 
 		void	PrintChar(std::string literal);
 		void	PrintInt(std::string literal);

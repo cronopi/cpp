@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:20:39 by rcastano          #+#    #+#             */
-/*   Updated: 2024/04/26 11:24:56 by roberto          ###   ########.fr       */
+/*   Updated: 2024/05/01 16:45:47 by rcastano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter &src)
 	return (*this);
 }
 
-
 char ScalarConverter::GetChar(void) const
 {
 	return (this->_c);
@@ -63,29 +62,18 @@ double ScalarConverter::GetDouble(void) const
 	return (this->_d);
 }
 
-
-bool IsChar(std::string literal)
+int IsChar(std::string literal)
 {
-/* 	if ((int)literal < 0 || (int)literal > 127)
-	{
-		std::cout << "char: Non displayable" << std::endl;
-		return false;
-	}
-	if else((literal > 0 && literal < 32) || literal == 127)
-	{
-		std::cout << "char: impossible" << std::endl;
-		return false;
-	} */
 	if (literal.length() == 1)
 	{
 		std::cout << "es char" << std::endl;
-		return true;
+		return 0;
 	}
 	else
-		return false;
+		return 1;
 }
 
-bool Isint(std::string literal)
+int IsInt(std::string literal)
 {
 	size_t i;
 
@@ -96,14 +84,13 @@ bool Isint(std::string literal)
 	while (i < literal.length())
 	{
 		if ( !(std::isdigit(literal[i])) )
-			return false;
+			return 1;
 		i++;
 	}
-	std::cout << "es int" << std::endl;
-	return true;
+	return 0;
 }
 
-bool IsFloat(std::string literal)
+int IsFloat(std::string literal)
 {
 	int i;
 	int dots;
@@ -124,21 +111,19 @@ bool IsFloat(std::string literal)
 				f++;
 			else
 			{
-				std::cout << "no float" << std::endl;
-				return false;
+				return 1;
 			}
 		}
 		i++;
 	}
 	if ((dots == 1 || dots == 0) && f == 1)
 	{
-		std::cout << "es float" << std::endl;
-		return true;
+		return 0;
 	}
-	return false;
+	return 1;
 }
 
-bool IsDouble(std::string literal)
+int IsDouble(std::string literal)
 {
 	size_t i;
 	int dots;
@@ -154,35 +139,118 @@ bool IsDouble(std::string literal)
 			if (literal[i] == '.')
 				dots++;
 			else
-				return false;
+				return 1;
 		}
 		i++;
 	}
 	if (dots == 1)
 	{
 		std::cout << "es double" << std::endl;
-		return true;
+		return 0;
 	}
-	return false;
+	return 1;
+}
+
+void	PrintChar(std::string literal)
+{
+    int numero;
+	
+	numero = std::stoi(literal); 
+	char valor_ascii = static_cast<char>(numero);
+    
+    std::cout << "El valor ASCII correspondiente al número " << literal << " es: " << valor_ascii << std::endl;
+    
+	std::cout << "Char: ";
+	if ( literal[0] >= 32 && literal[0] <= 126)
+		std::cout << literal << std::endl;
+	else
+		std::cout << "non displayable" << std::endl;
+}
+
+/*
+    int numero = 65; // El número que deseas convertir a su valor ASCII
+    char valor_ascii = static_cast<char>(numero);
+    
+    std::cout << "El valor ASCII correspondiente al número " << numero << " es: " << valor_ascii << std::endl;
+    
+    return 0;
+*/
+
+void	PrintInt(std::string literal)
+{
+	int i;
+
+	i = 0;
+	std::cout << "Int: ";
+	while (literal[i] != '\0')
+	{
+		if (literal[i] == '.' || literal[i] == 'f')
+			break;
+		std::cout << literal[i];
+		i++;
+	}
+	std::cout << std::endl;
+}
+
+void	PrintFloat(std::string literal, int number)
+{
+	std::cout << "Float: ";
+	std::cout << literal;
+	if (number == 1)
+		std::cout << "f" << std::endl;
+	else if (number == 2)
+		std::cout << ".0f" << std::endl;
+	else
+		std::cout << std::endl;
+}
+
+void	PrintDouble(std::string literal, int number)
+{		
+		int i;
+
+	i = 0;
+	std::cout << "Double: ";
+
+	while (literal[i] != '\0')
+	{
+		if (literal[i] == 'f')
+			break;
+		std::cout << literal[i];
+		i++;
+	}
+	if (number == 1)
+		std::cout << ".0";
+	std::cout << std::endl;
 }
 
 void ScalarConverter::convert(std::string literal)
 {
+	int i;
 
+	i = 0;
 	if (IsChar(literal) == 0)
 	{
-
+		PrintChar(literal);
 	}
-	if( Isint(literal) == 0)
+	else if( IsInt(literal) == 0)
 	{
-
+		PrintChar(literal);
+		PrintInt(literal);
+		PrintFloat(literal, 2);
+		PrintDouble(literal, 1);
 	}
-	if (IsFloat(literal) == 0)
+	else if (IsFloat(literal) == 0)
 	{
-
+		//PrintChar(literal);
+		PrintInt(literal);
+		PrintFloat(literal, 0);
+		PrintDouble(literal, 0);
 	}
-	if (IsDouble(literal) == 0)
+	else if (IsDouble(literal) == 0)
 	{
-
+		//PrintChar(literal);
+		PrintInt(literal);
+		PrintFloat(literal, 1);
+		PrintDouble(literal, 0);
 	}
 }
