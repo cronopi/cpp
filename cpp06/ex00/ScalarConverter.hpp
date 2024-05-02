@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:03:45 by rcastano          #+#    #+#             */
-/*   Updated: 2024/05/01 16:18:21 by rcastano         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:00:05 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 
 #include <string>
 #include <iostream>
-
-
+#include <cstdlib>
 
 
 class ScalarConverter
@@ -34,11 +33,6 @@ class ScalarConverter
 		ScalarConverter(ScalarConverter &src);
 		ScalarConverter &operator=(const ScalarConverter &src);
 
-		char	GetChar(void) const;
-		int		GetInt(void) const;
-		float	GetFloat(void) const;
-		double	GetDouble(void) const;
-
 		static void convert(std::string literal);
 };
 		int	IsChar(std::string literal);
@@ -47,9 +41,11 @@ class ScalarConverter
 		int	IsDouble(std::string literal, int number);
 
 
-		void	PrintChar(std::string literal);
+		void	PrintChar(char c);
 		void	PrintInt(std::string literal);
 		void	PrintFloat(std::string literal);
 		void	PrintDouble(std::string literal);
+
+		char	ConvertToChar(std::string literal);
 
 #endif
