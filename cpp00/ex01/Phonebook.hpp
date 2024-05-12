@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 16:28:13 by roberto           #+#    #+#             */
-/*   Updated: 2023/12/06 14:00:26 by roberto          ###   ########.fr       */
+/*   Updated: 2024/05/10 10:44:21 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class Phonebook
 	private:
 		Contact		_contacts[8];
 		int			_index;
+		int			_n_of_contacts;
 	public:
 		Phonebook();
 		~Phonebook();

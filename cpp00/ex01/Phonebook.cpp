@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 16:16:58 by roberto           #+#    #+#             */
-/*   Updated: 2023/12/07 18:35:22 by roberto          ###   ########.fr       */
+/*   Updated: 2024/05/10 10:44:05 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 Phonebook::Phonebook()
 {
 	this->_index = 0;
+	this->_n_of_contacts = 0;
 }
 
 Phonebook::~Phonebook()
@@ -42,6 +43,8 @@ void Phonebook::add_contact()
 	this->_index++;
 	if (this->_index == 8)
 		this->_index = 0;
+	else
+		this->_n_of_contacts++;
 }
 void Phonebook::search_contact()
 {
@@ -50,7 +53,7 @@ void Phonebook::search_contact()
 	std::cout << std::setw(10) << "first name" << "|";
 	std::cout << std::setw(10) << "last name" << "|";
 	std::cout << std::setw(10) << "nickname" << std::endl;
-	while (i < this->_index)
+	while (i < this->_n_of_contacts)
 	{
 		std::cout << std::setw(10) << "    -----------------------------------------" << std::endl;
 		std::cout << std::setw(10) << i << "|";

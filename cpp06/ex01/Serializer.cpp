@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:10:02 by rcastano          #+#    #+#             */
-/*   Updated: 2024/04/17 15:11:30 by rcastano         ###   ########.fr       */
+/*   Updated: 2024/05/10 11:16:37 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 Serializer::Serializer()
 {
-	
+
 }
 
 Serializer::~Serializer()
 {
-	
+
 }
 
 Serializer::Serializer(Serializer &src)

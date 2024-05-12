@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 12:18:30 by rcastano          #+#    #+#             */
-/*   Updated: 2024/05/02 11:20:49 by roberto          ###   ########.fr       */
+/*   Updated: 2024/05/10 11:11:00 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,14 @@
 
 #include <string>
 #include <iostream>
-#include<cstdint>
+#include <stdint.h>
 
-struct Data {
-	int	_id;
+struct Data
+{
+	std::string		name;
+	int				age;
+	int				height;
+	int				weight;
 };
 
 class Serializer
@@ -31,8 +35,8 @@ class Serializer
 		Serializer(Serializer &src);
 		Serializer &operator=(const Serializer &src);
 
-		static uintptr_t	serialize(Data* ptr);
-		static Data*		deserialize(uintptr_t raw);
+		static	uintptr_t	serialize(Data* ptr);
+		static	Data*		deserialize(uintptr_t raw);
 };
 
 #endif
