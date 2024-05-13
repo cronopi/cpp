@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:20:39 by rcastano          #+#    #+#             */
-/*   Updated: 2024/05/02 11:15:59 by roberto          ###   ########.fr       */
+/*   Updated: 2024/05/02 17:59:15 by rcastano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,6 +186,7 @@ char	ConvertToChar(std::string literal)
 		char number;
 
 		i = 0;
+		number = '\0';
 		while (literal[i] >= '0' && literal[i] <= '9')
 		{
 			i++;
@@ -193,10 +194,6 @@ char	ConvertToChar(std::string literal)
 		if (literal[i] == '\0' || literal[i] == '.' || literal[i] == 'f')
 		{
 			number = std::atof(literal.c_str());
-			if (number >= 32 || number <= 126)
-			{
-				return (number);
-			}
 		}
 		return (number);
 }

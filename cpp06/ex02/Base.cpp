@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.hpp                                           :+:      :+:    :+:   */
+/*   Base.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 10:58:55 by rcastano          #+#    #+#             */
-/*   Updated: 2024/05/13 13:50:21 by rcastano         ###   ########.fr       */
+/*   Created: 2024/05/13 12:03:28 by rcastano          #+#    #+#             */
+/*   Updated: 2024/05/13 13:51:17 by rcastano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BASE_HPP
-# define BASE_HPP
+#include "Base.hpp"
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
 
-#include <string>
-#include <iostream>
-#include <cstdlib>
-
-class Base
+Base::~Base()
 {
-	private:
 
-	public:
-		virtual ~Base();
-};
+}
 
-#endif
