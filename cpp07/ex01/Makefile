@@ -5,7 +5,6 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = run
 SRC = main.cpp
-
 OBJ = $(SRC:.cpp=.o)
 
 %.o: %.cpp
