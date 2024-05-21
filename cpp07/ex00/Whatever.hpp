@@ -3,12 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:03:45 by rcastano          #+#    #+#             */
-/*   Updated: 2024/05/14 14:41:57 by rcastano         ###   ########.fr       */
+/*   Updated: 2024/05/15 10:28:20 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef WHATEVER_HPP
+# define WHATEVER_HPP
 
 #include <string>
 #include <iostream>
@@ -44,3 +47,5 @@ T		max(T const& a, T const& b)
 	else
 		return (b);
 }
+
+#endif

@@ -3,24 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 10:52:40 by rcastano          #+#    #+#             */
-/*   Updated: 2024/05/14 15:20:41 by rcastano         ###   ########.fr       */
+/*   Updated: 2024/05/15 10:47:25 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Iter.hpp"
 
-void sleeping(void)
+void print(char c)
 {
-    std::cout << "zzzzzzzzzzzz" << std::endl; 
+    std::cout << c << std::endl;
+}
+
+void toupper(char c)
+{
+    std::cout << (char)std::toupper(c) << std::endl;
 }
 
 int main(void)
 {
     char ptr[] = "test";
-    //std::string ptr = "test";
-    iter(ptr, 5, sleeping);
+    iter(ptr, 5, print);
+    iter(ptr, 5, toupper);
     return (0);
 }

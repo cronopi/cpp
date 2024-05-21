@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 15:29:58 by rcastano          #+#    #+#             */
-/*   Updated: 2024/05/14 15:40:30 by rcastano         ###   ########.fr       */
+/*   Updated: 2024/05/21 10:21:29 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,76 @@
 #include <string>
 #include <iostream>
 
-template <Typename T>
 
-class Array:
+template <typename T>
+class Array
 {
-    private:
+	private:
+		int		_lenght;
 
-    public:
-        Array()
-        {
-            //create empty array   
-        }
-        Array(unsigned int n)
-        {
+	public:
+		T *elements;
+		Array()
+		{
+			elements = NULL;
+		}
+		Array(unsigned int n)
+		{
+			elements = new T[n];
+			_lenght = n;
+		}
+		Array(Array &src)
+		{
+			int i;
 
-        }
-        Array(Array &src)
-        {
+			_lenght = src.size();
+			elements = new T[_lenght];
+			for(i = 0; i < _lenght; i++)
+			{
+				elements[i] = src.elements[i];
+			}
+		}
+		Array &operator=(const Array &src)
+		{
+			int i;
+			if (this != &src)
+			{
+				delete [] elements;
+				_lenght = src.size();
+				elements = new T[_lenght];
+				for(i = 0; i < _lenght; i++)
+				{
+					elements[i] = src.elements[i];
+				}
+			}
+			return (*this);
+		}
+		Array &operator[](int i)
+		{
+			if (i < 0 || i >= _lenght)
+			{
+				throw OutOfBoundsException();
+			}
+			return (elements[i]);
 
-        }
-        Array &operator=(const Array &src);
+		}
+		~Array()
+		{
+			delete [] elements;
+			std::cout << "Destructor called" << std::endl;
+		}
+		int	size()
+		{
+			return (_lenght);
+		}
 
-
-
+		class OutOfBoundsException : public std::exception
+		{
+			virtual const char *what() const throw()
+			{
+				return ("Error: Out of bounds");
+			}
+		}
 
 };
 
