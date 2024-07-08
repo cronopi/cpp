@@ -3,66 +3,73 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 12:39:38 by rcastano          #+#    #+#             */
-/*   Updated: 2024/05/13 13:52:54 by rcastano         ###   ########.fr       */
+/*   Updated: 2024/05/21 11:26:08 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Base.hpp"
-#include "A.hpp"
-#include "B.hpp"
-#include "C.hpp"
 
 Base *generate(void)
 {
     int i;
 
-    i = rand() % 3;
-    std::cout << i << std::endl;
+	i = rand() % 3;
+	std::cout << i << std::endl;
 
 	if (i == 0)
-	    return (new A);
+		return (new A);
 	else if (i == 1)
-	    return (new B);
+		return (new B);
 	else
-	    return (new C);
+		return (new C);
 }
 
-void identify(Base *p)
+void identify(Base* p)
 {
-	if (dynamic_cast<A*>(p))
+	if ( dynamic_cast<A*>(p))
+	{
 		std::cout << "A" << std::endl;
-	else if (dynamic_cast<B*>(p))
+	}
+	else if ( dynamic_cast<B*>(p))
+	{
 		std::cout << "B" << std::endl;
-	else if (dynamic_cast<C*>(p))
+	}
+	else (dynamic_cast<C*>(p))
+	{
 		std::cout << "C" << std::endl;
+	}
 }
 
-void identify(Base &p)
+void identify(Base& p)
 {
 	try
 	{
-		A &a = dynamic_cast<A&>(p);
-		(void)a;
+		A& a = dynamic_cast<A&>(p);
 		std::cout << "A" << std::endl;
 	}
-	catch (std::exception &e) {}
+	catch(const std::exception &e)
+	{
+	}
 	try
 	{
-		B &b = dynamic_cast<B&>(p);
-		(void)b;
+		B& b = dynamic_cast<B&>(p);
 		std::cout << "B" << std::endl;
 	}
-	catch (std::exception &e) {}
+	catch(const std::exception &e)
+	{
+	}
 	try
 	{
-		C &c = dynamic_cast<C&>(p);
-		(void)c;
+		C& c = dynamic_cast<C&>(p);
 		std::cout << "C" << std::endl;
 	}
-	catch (std::exception &e) {}
+	catch(const std::exception &e)
+	{
+	}
+
 }
 
 int main(void)
@@ -73,5 +80,5 @@ int main(void)
 	identify(ptr);
 	identify(ref);
 	delete ptr;
-	return 0;
+	return (0);
 }

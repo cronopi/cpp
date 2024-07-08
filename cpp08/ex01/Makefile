@@ -1,11 +1,10 @@
 RM = rm -f
 
 CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror
 
 NAME = run
-SRC = main.cpp
-
+SRC = main.cpp Span.cpp
 OBJ = $(SRC:.cpp=.o)
 
 %.o: %.cpp

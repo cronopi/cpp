@@ -1,50 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/21 11:03:11 by roberto           #+#    #+#             */
-/*   Updated: 2024/05/21 11:05:48 by roberto          ###   ########.fr       */
+/*   Created: 2024/04/16 10:52:40 by rcastano          #+#    #+#             */
+/*   Updated: 2024/07/04 10:53:38 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef BASE_HPP
-# define BASE_HPP
+#include "Span.hpp"
+#include <random>
 
-#include <iostream>
-
-class Base
+int main(void)
 {
-	private:
+    Span example(10);
 
-	public:
-		virtual ~Base() {};
-
-};
-
-class A : public Base
-{
-	private:
-
-	public:
-};
-
-class B : public Base
-{
-	private:
-
-	public:
-
-};
-
-class C : public Base
-{
-	private:
-
-	public:
-
-};
-
-# endif
+    srand(time(NULL));
+    for (int i = 0; i < 10; i++)
+    {
+        example.addNumber(rand() % 100);
+        //example.addNumber(rand());
+    }
+    std::cout << example.shortestSpan() << std::endl;
+    std::cout << example.longestSpan() << std::endl;
+    return (0);
+}

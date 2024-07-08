@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   B.hpp                                              :+:      :+:    :+:   */
+/*   Easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 11:29:01 by rcastano          #+#    #+#             */
-/*   Updated: 2024/05/13 12:40:35 by rcastano         ###   ########.fr       */
+/*   Created: 2024/05/14 15:29:58 by rcastano          #+#    #+#             */
+/*   Updated: 2024/06/24 11:25:33 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef B_HPP
-# define B_HPP
+#ifndef EASYFIND_HPP
+# define EASYFIND_HPP
 
 #include <string>
 #include <iostream>
-#include "Base.hpp"
+#include <set>
 
-class B : public Base
-{
-	private:
+template <typename T>
 
-	public:
-};
+	int Easyfind(T container, int n)
+	{
+		typename T::iterator it;
+		it = container.begin();
+		while (it != container.end())
+		{
+			if (*it == n)
+				return (0);
+
+			it++;
+		}
+		return (1);
+	}
 
 #endif

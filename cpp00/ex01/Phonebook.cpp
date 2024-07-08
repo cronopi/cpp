@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 16:16:58 by roberto           #+#    #+#             */
-/*   Updated: 2024/05/10 10:44:05 by roberto          ###   ########.fr       */
+/*   Updated: 2024/07/04 10:30:20 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ Phonebook::~Phonebook()
 void Phonebook::add_contact()
 {
 	std::string input;
+	bool b = true;
 
 	std::cout << "First name: ";
 	std::cin >> input;
@@ -34,8 +35,22 @@ void Phonebook::add_contact()
 	std::cout << "Nickname: ";
 	std::cin >> input;
 	this->_contacts[this->_index].set_nickname(input);
-	std::cout << "Phone number: ";
-	std::cin >> input;
+	do
+	{
+		if (b == false)
+			std::cout << "Wrong phone number" << std::endl;
+		b = true;
+		std::cout << "Phone number: ";
+		std::cin >> input;
+		for(long unsigned int i = 0; i < input.length(); i++)
+		{
+			if(!isdigit(input[i]))
+			{
+				b = false;
+			}
+		}
+	}
+	while (b == false);
 	this->_contacts[this->_index].set_number(input);
 	std::cout << "Darkest secret: ";
 	std::cin >> input;
@@ -57,9 +72,9 @@ void Phonebook::search_contact()
 	{
 		std::cout << std::setw(10) << "    -----------------------------------------" << std::endl;
 		std::cout << std::setw(10) << i << "|";
-		std::cout << std::setw(10) << this->_contacts[i].get_first_name() << "|";
-		std::cout << std::setw(10) << this->_contacts[i].get_last_name() << "|";
-		std::cout << std::setw(10) << this->_contacts[i].get_nickname() << std::endl;
+		std::cout << std::setw(10) << this->_contacts[i].get_first_name().substr(0, 9) + (this->_contacts[i].get_first_name().length() > 9 ? "." : "")<< "|";
+		std::cout << std::setw(10) << this->_contacts[i].get_last_name().substr(0, 9) + (this->_contacts[i].get_last_name().length() > 9 ? "." : "")<< "|";
+		std::cout << std::setw(10) << this->_contacts[i].get_nickname().substr(0, 9) + (this->_contacts[i].get_nickname().length() > 9 ? "." : "") << std::endl;
 		i++;
 	}
 	std::cout << std::setw(10) << "    -----------------------------------------" << std::endl;
