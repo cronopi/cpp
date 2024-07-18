@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 16:16:58 by roberto           #+#    #+#             */
-/*   Updated: 2024/07/04 10:30:20 by roberto          ###   ########.fr       */
+/*   Updated: 2024/07/12 11:20:37 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,51 @@ void Phonebook::add_contact()
 	std::string input;
 	bool b = true;
 
-	std::cout << "First name: ";
-	std::cin >> input;
+	std::cout << "First name: " << std::endl;
+	//std::cin >> input;
+	std::getline(std::cin, input);
+	if (std::cin.eof())
+	{
+        std::cout << "Fin de entrada detectado. Saliendo del bucle." << std::endl;
+        exit (1);
+    }
+/* 	if (input.empty())
+	{
+		std::cout << "First name can't be empty" << std::endl;
+		std::getline(std::cin, input);
+	} */
 	this->_contacts[this->_index].set_first_name(input);
-	std::cout << "Last name: ";
-	std::cin >> input;
+	std::cout << "Last name: " << std::endl;
+	//std::cin >> input;
+	std::getline(std::cin, input);
+	if (std::cin.eof())
+	{
+        std::cout << "Fin de entrada detectado. Saliendo del bucle." << std::endl;
+        exit (1);
+    }
 	this->_contacts[this->_index].set_last_name(input);
-	std::cout << "Nickname: ";
-	std::cin >> input;
+	std::cout << "Nickname: " << std::endl;
+	//std::cin >> input;
+	std::getline(std::cin, input);
+	if (std::cin.eof())
+	{
+        std::cout << "Fin de entrada detectado. Saliendo del bucle." << std::endl;
+        exit (1);
+    }
 	this->_contacts[this->_index].set_nickname(input);
 	do
 	{
 		if (b == false)
 			std::cout << "Wrong phone number" << std::endl;
 		b = true;
-		std::cout << "Phone number: ";
-		std::cin >> input;
+		std::cout << "Phone number: " << std::endl;
+		std::getline(std::cin, input);
+		//std::cin >> input;
+		if (std::cin.eof())
+		{
+			std::cout << "Fin de entrada detectado. Saliendo del bucle." << std::endl;
+			exit (1);
+		}
 		for(long unsigned int i = 0; i < input.length(); i++)
 		{
 			if(!isdigit(input[i]))
@@ -52,13 +81,19 @@ void Phonebook::add_contact()
 	}
 	while (b == false);
 	this->_contacts[this->_index].set_number(input);
-	std::cout << "Darkest secret: ";
-	std::cin >> input;
+	std::cout << "Darkest secret: " << std::endl;
+	//std::cin >> input;
+	std::getline(std::cin, input);
+	if (std::cin.eof())
+	{
+        std::cout << "Fin de entrada detectado. Saliendo del bucle." << std::endl;
+        exit (1);
+    }
 	this->_contacts[this->_index].set_darkest_secret(input);
 	this->_index++;
 	if (this->_index == 8)
 		this->_index = 0;
-	else
+	else if (this->_n_of_contacts < 8)
 		this->_n_of_contacts++;
 }
 void Phonebook::search_contact()

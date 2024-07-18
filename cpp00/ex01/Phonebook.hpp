@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 16:28:13 by roberto           #+#    #+#             */
-/*   Updated: 2024/05/10 10:44:21 by roberto          ###   ########.fr       */
+/*   Updated: 2024/07/12 10:45:03 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 # include	<iomanip>
 # include	"Contact.hpp"
+# include	<limits>
 
 class Phonebook
 {
