@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 16:16:58 by roberto           #+#    #+#             */
-/*   Updated: 2024/07/12 11:20:37 by roberto          ###   ########.fr       */
+/*   Updated: 2024/07/18 15:50:56 by rcastano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,75 +21,95 @@ Phonebook::Phonebook()
 Phonebook::~Phonebook()
 {
 }
+bool Phonebook::ft_empty(std::string input, bool b)
+{
+	if (std::cin.eof())
+	{
+		std::cout << "Fin de entrada detectado. Saliendo del bucle." << std::endl;
+		exit (1);
+	}
+	if (input.empty())
+	{
+		std::cout << "It can't be empty" << std::endl;
+		return (false);
+	}
+	for(long unsigned int i = 0; i < input.length(); i++)
+	{
+		if (input[i] == '\t')
+		{
+			std::cout << "Dont use tabs" << std::endl;
+			return (false);
+		}
+		if(std::isalnum(input[i]))
+			return (true);
+	}
+	b = false;
+	return (b);
+}
 void Phonebook::add_contact()
 {
 	std::string input;
 	bool b = true;
-
-	std::cout << "First name: " << std::endl;
-	//std::cin >> input;
-	std::getline(std::cin, input);
-	if (std::cin.eof())
+	do
 	{
-        std::cout << "Fin de entrada detectado. Saliendo del bucle." << std::endl;
-        exit (1);
-    }
-/* 	if (input.empty())
-	{
-		std::cout << "First name can't be empty" << std::endl;
+		if (b == false)
+			std::cout << "Wrong first name" << std::endl;
+		b = true;
+		std::cout << "First name: " << std::endl;
 		std::getline(std::cin, input);
-	} */
-	this->_contacts[this->_index].set_first_name(input);
-	std::cout << "Last name: " << std::endl;
-	//std::cin >> input;
-	std::getline(std::cin, input);
-	if (std::cin.eof())
+		b = ft_empty(input, b);
+	}
+	while (b == false);
+		this->_contacts[this->_index].set_first_name(input);
+	do
 	{
-        std::cout << "Fin de entrada detectado. Saliendo del bucle." << std::endl;
-        exit (1);
-    }
-	this->_contacts[this->_index].set_last_name(input);
-	std::cout << "Nickname: " << std::endl;
-	//std::cin >> input;
-	std::getline(std::cin, input);
-	if (std::cin.eof())
+		if (b == false)
+			std::cout << "Wrong last name" << std::endl;
+		b = true;
+		std::cout << "last name: " << std::endl;
+		std::getline(std::cin, input);
+		b = ft_empty(input, b);
+	}
+	while (b == false);
+		this->_contacts[this->_index].set_last_name(input);
+	do
 	{
-        std::cout << "Fin de entrada detectado. Saliendo del bucle." << std::endl;
-        exit (1);
-    }
-	this->_contacts[this->_index].set_nickname(input);
+		if (b == false)
+			std::cout << "Wrong nickname" << std::endl;
+		b = true;
+		std::cout << "nickname: " << std::endl;
+		std::getline(std::cin, input);
+		b = ft_empty(input, b);
+	}
+	while (b == false);
+		this->_contacts[this->_index].set_nickname(input);
 	do
 	{
 		if (b == false)
 			std::cout << "Wrong phone number" << std::endl;
 		b = true;
-		std::cout << "Phone number: " << std::endl;
+		std::cout << "phone number: " << std::endl;
 		std::getline(std::cin, input);
-		//std::cin >> input;
-		if (std::cin.eof())
-		{
-			std::cout << "Fin de entrada detectado. Saliendo del bucle." << std::endl;
-			exit (1);
-		}
+		b = ft_empty(input, b);
 		for(long unsigned int i = 0; i < input.length(); i++)
 		{
 			if(!isdigit(input[i]))
-			{
 				b = false;
-			}
 		}
 	}
 	while (b == false);
-	this->_contacts[this->_index].set_number(input);
-	std::cout << "Darkest secret: " << std::endl;
-	//std::cin >> input;
-	std::getline(std::cin, input);
-	if (std::cin.eof())
+		this->_contacts[this->_index].set_number(input);
+	do
 	{
-        std::cout << "Fin de entrada detectado. Saliendo del bucle." << std::endl;
-        exit (1);
-    }
-	this->_contacts[this->_index].set_darkest_secret(input);
+		if (b == false)
+			std::cout << "Wrong Darkest secret" << std::endl;
+		b = true;
+		std::cout << "Darkest secret: " << std::endl;
+		std::getline(std::cin, input);
+		b = ft_empty(input, b);
+	}
+	while (b == false);
+		this->_contacts[this->_index].set_darkest_secret(input);
 	this->_index++;
 	if (this->_index == 8)
 		this->_index = 0;

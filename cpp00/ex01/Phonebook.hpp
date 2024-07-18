@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 16:28:13 by roberto           #+#    #+#             */
-/*   Updated: 2024/07/12 10:45:03 by roberto          ###   ########.fr       */
+/*   Updated: 2024/07/18 15:20:20 by rcastano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include	<iomanip>
 # include	"Contact.hpp"
 # include	<limits>
+# include	<cctype>
+
 
 class Phonebook
 {
@@ -29,6 +31,7 @@ class Phonebook
 		~Phonebook();
 		void add_contact();
 		void search_contact();
+		bool ft_empty(std::string input, bool b);
 };
 
 #endif

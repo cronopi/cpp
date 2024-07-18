@@ -6,17 +6,16 @@
 /*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 16:17:17 by roberto           #+#    #+#             */
-/*   Updated: 2024/04/01 11:02:04 by rcastano         ###   ########.fr       */
+/*   Updated: 2024/07/18 14:03:04 by rcastano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
-Contact::Contact() // inicializar el objeto cuando se crea una instancia de la clase Contact
+Contact::Contact()
 {
 }
 
-//  Si tu clase Contact adquiere recursos destruyelos en el destructor
 Contact::~Contact()
 {
 }
