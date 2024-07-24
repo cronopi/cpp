@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 16:16:58 by roberto           #+#    #+#             */
-/*   Updated: 2024/07/18 15:50:56 by rcastano         ###   ########.fr       */
+/*   Updated: 2024/07/22 12:43:16 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,26 +21,30 @@ Phonebook::Phonebook()
 Phonebook::~Phonebook()
 {
 }
+
+std::string Tabs_to_spaces(std::string input)
+{
+	std::string tmp;
+	std::regex const tab(R"(\t)");
+
+	std::regex_replace(std::back_inserter(tmp), std::begin(input), std::end(input), tab,"    ");
+	return (tmp);
+}
 bool Phonebook::ft_empty(std::string input, bool b)
 {
 	if (std::cin.eof())
 	{
 		std::cout << "Fin de entrada detectado. Saliendo del bucle." << std::endl;
-		exit (1);
+		std::exit (1);
 	}
 	if (input.empty())
 	{
 		std::cout << "It can't be empty" << std::endl;
 		return (false);
 	}
-	for(long unsigned int i = 0; i < input.length(); i++)
+	for (long unsigned int i = 0; i < input.length(); i++)
 	{
-		if (input[i] == '\t')
-		{
-			std::cout << "Dont use tabs" << std::endl;
-			return (false);
-		}
-		if(std::isalnum(input[i]))
+		if (std::isalnum(input[i]))
 			return (true);
 	}
 	b = false;
@@ -57,10 +61,11 @@ void Phonebook::add_contact()
 		b = true;
 		std::cout << "First name: " << std::endl;
 		std::getline(std::cin, input);
+		input = Tabs_to_spaces(input);
 		b = ft_empty(input, b);
 	}
 	while (b == false);
-		this->_contacts[this->_index].set_first_name(input);
+	this->_contacts[this->_index].set_first_name(input);
 	do
 	{
 		if (b == false)
@@ -68,10 +73,11 @@ void Phonebook::add_contact()
 		b = true;
 		std::cout << "last name: " << std::endl;
 		std::getline(std::cin, input);
+		input = Tabs_to_spaces(input);
 		b = ft_empty(input, b);
 	}
 	while (b == false);
-		this->_contacts[this->_index].set_last_name(input);
+	this->_contacts[this->_index].set_last_name(input);
 	do
 	{
 		if (b == false)
@@ -79,10 +85,11 @@ void Phonebook::add_contact()
 		b = true;
 		std::cout << "nickname: " << std::endl;
 		std::getline(std::cin, input);
+		input = Tabs_to_spaces(input);
 		b = ft_empty(input, b);
 	}
 	while (b == false);
-		this->_contacts[this->_index].set_nickname(input);
+	this->_contacts[this->_index].set_nickname(input);
 	do
 	{
 		if (b == false)
@@ -90,6 +97,7 @@ void Phonebook::add_contact()
 		b = true;
 		std::cout << "phone number: " << std::endl;
 		std::getline(std::cin, input);
+		input = Tabs_to_spaces(input);
 		b = ft_empty(input, b);
 		for(long unsigned int i = 0; i < input.length(); i++)
 		{
@@ -98,7 +106,7 @@ void Phonebook::add_contact()
 		}
 	}
 	while (b == false);
-		this->_contacts[this->_index].set_number(input);
+	this->_contacts[this->_index].set_number(input);
 	do
 	{
 		if (b == false)
@@ -106,6 +114,7 @@ void Phonebook::add_contact()
 		b = true;
 		std::cout << "Darkest secret: " << std::endl;
 		std::getline(std::cin, input);
+		input = Tabs_to_spaces(input);
 		b = ft_empty(input, b);
 	}
 	while (b == false);

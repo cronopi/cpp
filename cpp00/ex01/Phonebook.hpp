@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 16:28:13 by roberto           #+#    #+#             */
-/*   Updated: 2024/07/18 15:20:20 by rcastano         ###   ########.fr       */
+/*   Updated: 2024/07/22 12:35:19 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 # include	"Contact.hpp"
 # include	<limits>
 # include	<cctype>
-
+#include	<regex>
+#include	<string>
+#include	<iterator>
 
 class Phonebook
 {
