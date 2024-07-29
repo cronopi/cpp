@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:32:55 by roberto           #+#    #+#             */
-/*   Updated: 2023/12/16 11:57:44 by roberto          ###   ########.fr       */
+/*   Updated: 2024/07/26 11:14:52 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Weapon
 
 		Weapon(std::string type);
 		const std::string	getType() const;
-		void		setType(std::string new_type);
+		void				setType(std::string new_type);
 };
 
 #endif

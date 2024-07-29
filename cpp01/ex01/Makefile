@@ -1,7 +1,7 @@
 RM = rm -f
 
 CC = c++
-FLAGS = -Wall -Wextra -Werror # -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = horde
 SRC = main.cpp Zombie.cpp zombieHorde.cpp

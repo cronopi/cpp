@@ -1,10 +1,10 @@
 RM = rm -f
 
 CC = c++
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = zombie
-SRC = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+SRC = main.cpp Zombie.cpp NewZombie.cpp RandomChump.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

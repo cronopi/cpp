@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:16:05 by roberto           #+#    #+#             */
-/*   Updated: 2023/12/08 13:40:46 by roberto          ###   ########.fr       */
+/*   Updated: 2024/07/26 10:26:07 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ class	Zombie
 
 	public:
 		void	announce( void );
-		//constructor
 		Zombie(std::string name);
-		//destructor
 		~Zombie();
 };
 	Zombie* newZombie( std::string name );

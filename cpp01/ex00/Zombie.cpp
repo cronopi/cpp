@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 13:55:09 by roberto           #+#    #+#             */
-/*   Updated: 2023/12/08 14:01:27 by roberto          ###   ########.fr       */
+/*   Updated: 2024/07/26 10:45:13 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 Zombie::~Zombie()
 {
+	std::cout << "Zombie " << this->_name << " destroyed" << std::endl;
 }
 Zombie::Zombie(std::string name)
 {

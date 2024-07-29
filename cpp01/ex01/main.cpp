@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 16:27:01 by roberto           #+#    #+#             */
-/*   Updated: 2023/12/16 11:16:00 by roberto          ###   ########.fr       */
+/*   Updated: 2024/07/26 10:42:08 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@ int	main(void)
 {
 	Zombie	*horde;
 	int i = 0;
+	int n = 3;
 
-	horde = zombieHorde(3, "for the horde!");
-	while (i < 3)
+	horde = zombieHorde(n, "for the horde!");
+	while (i < n)
 	{
 		horde[i].announce();
 		i++;
