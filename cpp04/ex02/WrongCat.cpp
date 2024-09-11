@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 13:37:24 by roberto           #+#    #+#             */
-/*   Updated: 2023/12/25 13:55:34 by roberto          ###   ########.fr       */
+/*   Updated: 2024/09/11 21:33:54 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,17 @@ void WrongCat::makeSound() const
 WrongCat::~WrongCat()
 {
 	std::cout << "WrongCat destructor called" << std::endl;
+}
+
+WrongCat::WrongCat(const WrongCat &copy)
+{
+	this->type = copy.type;
+	std::cout << "WrongCat copy constructor called" << std::endl;
+}
+
+WrongCat &WrongCat::operator=(const WrongCat &assign)
+{
+	this->type = assign.type;
+	std::cout << "WrongCat assignation operator called" << std::endl;
+	return (*this);
 }
