@@ -6,16 +6,11 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 14:44:07 by roberto           #+#    #+#             */
-/*   Updated: 2024/09/11 21:09:49 by roberto          ###   ########.fr       */
+/*   Updated: 2024/09/12 13:23:39 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
-
-Cat::Cat()
-{
-	std::cout << "Cat constructor called" << std::endl;
-}
 
 Cat::Cat() : Animal("Cat")
 {

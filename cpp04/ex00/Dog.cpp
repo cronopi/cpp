@@ -6,16 +6,11 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:58:29 by roberto           #+#    #+#             */
-/*   Updated: 2024/09/11 21:09:16 by roberto          ###   ########.fr       */
+/*   Updated: 2024/09/12 13:23:23 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
-
-Dog::Dog()
-{
-	std::cout << "Dog constructor called" << std::endl;
-}
 
 Dog::Dog() : Animal("Dog")
 {
