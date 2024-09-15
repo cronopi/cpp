@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:48:39 by roberto           #+#    #+#             */
-/*   Updated: 2023/12/29 14:13:43 by roberto          ###   ########.fr       */
+/*   Updated: 2024/09/15 19:50:43 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,18 @@
 
 int main (void)
 {
-	Dog			dog;
-	Animal		*animals[6];
+	//Animal animal;
 
-	for (size_t i = 0; i < 6; i++) {
-		if (i < 3)
-			animals[i] = new Dog;
-		else
-			animals[i] = new Cat;
-	}
-
-	dog.getBrain()->newIdea("I want to play all day");
+	Dog	dog;
 	Dog	cpydog(dog);
-	std::string *ideas = cpydog.getBrain()->getIdeas();
-	std::cout << ideas[0] << std::endl;
+	dog.getBrain()->newIdea("I want to play all day");
+	cpydog.getBrain()->newIdea("zzz...");
 
-	for (size_t i = 0; i < 6; i++)
-		delete animals[i];
+	std::string *ideas = dog.getBrain()->getIdeas();
+	std::cout << "idea: " << ideas[0] << std::endl;
+
+		ideas = cpydog.getBrain()->getIdeas();
+	std::cout << "idea: " << ideas[1] << std::endl;
 
 	return (0);
 }
