@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 22:28:33 by roberto           #+#    #+#             */
-/*   Updated: 2023/12/29 00:49:02 by roberto          ###   ########.fr       */
+/*   Updated: 2024/09/12 18:06:07 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	copyIdeas(std::string dst[100], std::string *ideas) {
 
 Brain::Brain(Brain &brain)
 {
-	std::cout << "Brain set up completed" << std::endl;
+	std::cout << "Brain copy constructor called" << std::endl;
 	copyIdeas(ideas, brain.getIdeas());
 	return ;
 }

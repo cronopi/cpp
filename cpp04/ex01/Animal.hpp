@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:47:20 by roberto           #+#    #+#             */
-/*   Updated: 2023/12/29 14:04:43 by roberto          ###   ########.fr       */
+/*   Updated: 2024/09/16 18:53:04 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 class Animal
 {
 	private:
-		Brain *brain;
+
 	protected:
 		std::string type;
 
@@ -33,8 +33,6 @@ class Animal
 
 		virtual void makeSound() const;
 		std::string getType() const;
-
-		Brain	*getBrain(void) const;
 };
 
 #endif

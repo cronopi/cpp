@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 13:29:27 by roberto           #+#    #+#             */
-/*   Updated: 2023/12/25 13:48:00 by roberto          ###   ########.fr       */
+/*   Updated: 2024/09/16 15:19:05 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class WrongAnimal
 		WrongAnimal &operator=(const WrongAnimal &copy);
 
 		std::string getType() const;
-		virtual void makeSound() const;
+		void makeSound() const;
 };
 
 #endif
