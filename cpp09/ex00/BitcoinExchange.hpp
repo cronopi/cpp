@@ -1,43 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Span.hpp                                           :+:      :+:    :+:   */
+/*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 15:29:58 by rcastano          #+#    #+#             */
-/*   Updated: 2024/10/15 23:52:23 by roberto          ###   ########.fr       */
+/*   Updated: 2024/10/19 16:24:33 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPAN_HPP
-# define SPAN_HPP
+#ifndef BITCOINEXCHANGE_HPP
+# define BITCOINEXCHANGE_HPP
 
 # include <iostream>
+#include <fstream>
+#include <map>
 #include <vector>
-#include <algorithm>
+#include <sstream>
+#include <string>
 
-class Span
+
+class BitcoinExchange
 {
 	private:
-		std::vector<int> _Container;
-		unsigned int _lenght;
-		unsigned int _i;
-		class SpanException : public std::exception
-		{
-			virtual const char *what() const throw();
-		};
+		//std::map<std::string, float> data;
+		std::vector<std::string> date;
+		std::vector<std::string> exchange;
 	public:
-		Span();
-		~Span();
-		Span(const Span &copy);
-		Span & operator=(const Span &copy);
-		Span(unsigned int n);
-		void	fill(unsigned int size);
-		void	addNumber(int nbr);
-		int		shortestSpan();
-		int		longestSpan();
+		BitcoinExchange();
+		~BitcoinExchange();
+		BitcoinExchange(const BitcoinExchange &copy);
+		BitcoinExchange &operator=(const BitcoinExchange &copy);
 
+		void checkFile(char *argv);
+		void check_date(std::vector<std::string> date);
+		void check_exchange(std::vector<std::string> exchange);
+
+		void printData(std::vector<std::string> print);
 };
 
 #endif

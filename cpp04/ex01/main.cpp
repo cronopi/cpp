@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:48:39 by roberto           #+#    #+#             */
-/*   Updated: 2024/09/16 19:05:50 by roberto          ###   ########.fr       */
+/*   Updated: 2024/09/19 12:43:56 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ int main (void)
 
 	Dog	cpydog(dog);
 
-	ideas = dog.getBrain()->getIdeas();
+	ideas = cpydog.getBrain()->getIdeas();
 	std::cout << "idea: " << ideas[0] << std::endl;
-	ideas = dog.getBrain()->getIdeas();
+	ideas = cpydog.getBrain()->getIdeas();
 	std::cout << "idea: " << ideas[1] << std::endl;
 	return (0);
 }

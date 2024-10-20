@@ -6,38 +6,29 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 10:52:40 by rcastano          #+#    #+#             */
-/*   Updated: 2024/10/16 17:06:26 by roberto          ###   ########.fr       */
+/*   Updated: 2024/10/19 17:23:21 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Span.hpp"
+#include "BitcoinExchange.hpp"
 
-
-int main(void)
+int main(int argc, char **argv)
 {
-/*     Span example = Span(5);
-
-    try
+    if (argc != 2)
     {
-        example.fill(5);
-        std::cout << example.shortestSpan() << " es el numero con menor diferencia\n" << std::endl;
-        std::cout << example.longestSpan() << " es el numero con mayor diferencia\n" << std::endl;
+        std::cout << "Error: Invalid number of arguments." << std::endl;
+        return (1);
     }
-    catch(const std::exception& e)
+    if (!(std::string(argv[1]) == "data.csv"))
     {
-        std::cerr << "Error: " << e.what() << std::endl;
+        std::cout << "Error: Invalid database file. This database is provided with this subject." << std::endl;
+        return (1);
     }
- */
+    BitcoinExchange bit;
 
-    Span sp = Span(5);
-    sp.addNumber(6);
-    sp.addNumber(3);
-    sp.addNumber(17);
-    sp.addNumber(9);
-    sp.addNumber(11);
+    bit.checkFile(argv[1]);
 
-    std::cout << sp.shortestSpan() << std::endl;
-    std::cout << sp.longestSpan() << std::endl;
-
+    //bit.getValue(argv[1]);
+    //bit.printData();
     return (0);
 }
