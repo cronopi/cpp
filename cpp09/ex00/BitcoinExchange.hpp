@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 15:29:58 by rcastano          #+#    #+#             */
-/*   Updated: 2024/10/23 12:33:01 by roberto          ###   ########.fr       */
+/*   Updated: 2024/10/24 14:29:09 by rcastano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ class BitcoinExchange
 		BitcoinExchange &operator=(const BitcoinExchange &copy);
 
 		void checkFile(char *argv);
-
 		void print_map();
 };
 

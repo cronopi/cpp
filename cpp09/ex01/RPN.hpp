@@ -14,7 +14,7 @@ class RPN
 		RPN(RPN const & src);
 		RPN & operator=(RPN const & rhs);
 
-		void parse(std::string str);
+		void calculate(std::string str);
 		void printStack(std::stack<int> stack);
 };
 

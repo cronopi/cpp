@@ -21,12 +21,24 @@ RPN & RPN::operator=(RPN const & rhs)
 	return (*this);
 }
 
-void RPN::parse(std::string str)
+void RPN::calculate(std::string str)
 {
 	int num = 0;
 	int value_1 = 0;
+	if (str == "")
+	{
+		std::cout << "Error" << std::endl;
+		return ;
+	}
 	for (size_t i = 0; i < str.length(); i++)
 	{
+		//std::cout << "valor del caracter" << str[i] << std::endl;
+		if ((!(str[i] >= '0' && str[i] <= '9')) && str[i] != '+' && str[i] != '-' && str[i] != '*' && str[i] != '/' && str[i] != ' ')
+		{
+			std::cout << "Error: caracter incorrecto" << std::endl;
+			return ;
+		}	
+
 		if (str[i] >= '0' && str[i] <= '9')
 		{
 			if (str[i + 1] >= '0' && str[i] <= '9')
@@ -40,7 +52,7 @@ void RPN::parse(std::string str)
 		{
 			if (stack.size() != 2)
 			{
-				std::cout << "error" << std::endl;
+				std::cout << "Error" << std::endl;
 				return ;
 			}
 			value_1 = stack.top();
@@ -48,27 +60,38 @@ void RPN::parse(std::string str)
 			if (str[i] == '+')
 			{
 				num = stack.top() + value_1;
-				std::cout << num << std::endl;
 				stack.pop();
+				stack.push(num);
 			}
 			else if (str[i] == '-')
 			{
 				num = stack.top() - value_1;
-				std::cout << num << std::endl;
 				stack.pop();
+				stack.push(num);
 			}
 			else if (str[i] == '/')
 			{
 				num = stack.top() / value_1;
-				std::cout << num << std::endl;
 				stack.pop();
+				stack.push(num);
 			}
 			else if (str[i] == '*')
 			{
 				num = stack.top() * value_1;
-				std::cout << num << std::endl;
 				stack.pop();
+				stack.push(num);
 			}
 		}
 	}
+	if (num != stack.top())
+		std::cout << "Error" << std::endl;
+	else
+		std::cout << stack.top() << std::endl;
 }
+
+/* $> ./RPN "8 9 * 9 - 9 - 9 - 4 - 1 +"
+42
+$> ./RPN "7 7 * 7 -"
+42
+$> ./RPN "(1 + 1)"
+Error */
