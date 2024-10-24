@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 15:29:58 by rcastano          #+#    #+#             */
-/*   Updated: 2024/10/21 15:18:30 by rcastano         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:33:01 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <vector>
 #include <sstream>
 #include <string>
+#include <algorithm>
 
 
 class BitcoinExchange
@@ -28,7 +29,6 @@ class BitcoinExchange
 		std::vector<std::string> date;
 
 		std::vector<float> exchange;
-		std::vector<float> data_number;
 	public:
 		BitcoinExchange();
 		~BitcoinExchange();
@@ -36,13 +36,8 @@ class BitcoinExchange
 		BitcoinExchange &operator=(const BitcoinExchange &copy);
 
 		void checkFile(char *argv);
-		void check_date(std::vector<std::string> date);
-		void check_exchange(std::vector<float> exchange);
 
-		void printData(std::vector<std::string> print);
-		void printfloat(std::vector<float> print);
 		void print_map();
-		bool Whitespaces(unsigned c);
 };
 
 #endif
