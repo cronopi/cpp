@@ -9,7 +9,8 @@
 class PmergeMe
 {
 	private:
-
+		std::vector<int>	vec;
+		std::list<int>		lst;
 
 	public:
 		PmergeMe();
@@ -17,11 +18,14 @@ class PmergeMe
 		PmergeMe(const PmergeMe &copy);
 		PmergeMe &operator=(const PmergeMe &rhs);
 
-		std::vector<int>	vec;
-		std::list<int>		lst;
-		PmergeMe(std::string str);
+		PmergeMe(char **argv);
+		void SortList(std::list<int> arr);
+		void merge(std::list<int>& left, std::list<int>& right, std::list<int>& arr);
+		void SortVector(std::vector<int> vec);
+		template <typename Container>
+    	void print(const Container& container, const std::string& tipo, std::string display);
 };
 
 #endif
 
-// ./MergeMe 1 2 4 
+// ./MergeMe 1 2 4
