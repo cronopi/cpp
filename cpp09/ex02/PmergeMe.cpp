@@ -36,37 +36,71 @@ void PmergeMe::print(const Container& container, const std::string& tipo, std::s
 
 void PmergeMe::SortList(std::list<int> arr)
 {
+    std::list<std::pair<int, int>> pares;
+    std::list<std::pair<int, int>> sorted_pares;
+    int tmp = 0;
+    int tmp_it = 0;
+    int straggler = -1;
+    (void)straggler;
 	if (arr.size() <= 1)
 		return;
 
-
-    std::list<int> left, right;
-    std::list<int>::iterator mid = arr.begin();
-    std::advance(mid, arr.size() / 2);
-
-	int pos = std::distance(arr.begin(), mid); // calcular la posición del iterador mid
-	std::cout << "Valor del iterador mid: " << *mid << " (posición " << pos << ")" << std::endl;
-
-    left.splice(left.begin(), arr, arr.begin(), mid);
-    right.splice(right.begin(), arr, mid, arr.end());
-
-	std::cout << "Lista left: ";
-	for (int i : left)
-	{
-    std::cout << i << " ";
-	}
+    if ((arr.size() % 2) != 0)
+    {   
+        straggler = arr.back();
+        std::cout << "straggler: " << straggler << std::endl;
+        arr.pop_back();
+        print(arr, "list", "arreglada");
+    }
+    for (std::list<int>::iterator it = arr.begin(); it != arr.end();)
+    {
+        pares.emplace_back(*it, *std::next(it));
+        it++;
+        it++;
+    }
+    for (auto& par : pares) 
+    {
+        if (par.first > par.second)
+        {
+            tmp = par.first;
+            par.first = par.second;
+            par.second = tmp;
+        }
+    }
+    for (auto& par : pares) 
+    {
+        std::cout << "(" << par.first << ", " << par.second << ")" << std::endl;
+    }
 	std::cout << std::endl;
 
-	std::cout << "Lista right: ";
-	for (int i : right)
-	{
-    	std::cout << i << " ";
-	}
-	std::cout << std::endl;
-    //SortList(left);
-    //SortList(right);
 
-    //merge(left, right, arr);
+    while (pares.size() > 0)
+    {
+        tmp = 2147483647;
+        int tmp2 = 2147483647;
+        std::list<std::pair<int, int>>::iterator it;
+        for (it = pares.begin(); it != pares.end(); it++)
+        {
+            if (tmp > it->second)
+            {
+                tmp = it->second;
+                tmp2 = it->first;
+                tmp_it = std::distance(pares.begin(), it);
+            }
+            std::cout << "(" << it->first << ", " << it->second << ")" << std::endl;
+        }
+
+        sorted_pares.emplace_back(tmp2, tmp);
+        pares.erase(tmp_it);
+        it = pares.begin();
+
+        std::cout << "sorted_pares: " << std::endl;
+        for (std::list<std::pair<int, int>>::iterator it = sorted_pares.begin(); it != sorted_pares.end(); it++)
+        {
+            std::cout << "(" << it->first << ", " << it->second << ")" << std::endl;
+        }
+    }
+
 }
 
 void PmergeMe::merge(std::list<int>& left, std::list<int>& right, std::list<int>& arr)
@@ -117,8 +151,8 @@ PmergeMe::PmergeMe(char **argv)
 		}
         i++;
     }
-    print(lst, "list", "before");
-	print(vec, "vector", "before");
+/*     print(lst, "list", "before");
+	print(vec, "vector", "before"); */
 
 	SortList(lst);
 }
