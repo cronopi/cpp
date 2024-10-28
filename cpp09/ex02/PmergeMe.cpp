@@ -44,11 +44,25 @@ void PmergeMe::SortList(std::list<int> arr)
     std::list<int>::iterator mid = arr.begin();
     std::advance(mid, arr.size() / 2);
 
-
+	int pos = std::distance(arr.begin(), mid); // calcular la posición del iterador mid
+	std::cout << "Valor del iterador mid: " << *mid << " (posición " << pos << ")" << std::endl;
 
     left.splice(left.begin(), arr, arr.begin(), mid);
     right.splice(right.begin(), arr, mid, arr.end());
 
+	std::cout << "Lista left: ";
+	for (int i : left)
+	{
+    std::cout << i << " ";
+	}
+	std::cout << std::endl;
+
+	std::cout << "Lista right: ";
+	for (int i : right)
+	{
+    	std::cout << i << " ";
+	}
+	std::cout << std::endl;
     //SortList(left);
     //SortList(right);
 
