@@ -106,28 +106,53 @@ void PmergeMe::Sortbypair(std::list<std::pair<int, int>> sorted_pares)
         i++;
     }
 
-    /*
-    Una búsqueda binaria es un algoritmo de búsqueda que se utiliza para encontrar un elemento específico en una lista ordenada.
-    El algoritmo funciona dividiendo la lista en dos partes y comparando el elemento que se busca con el elemento del medio de la lista.
-
-    Aquí hay los pasos básicos de una búsqueda binaria:
-
-    Se inicia con una lista ordenada de elementos.
-    Se calcula el índice del medio de la lista.
-    Se compara el elemento que se busca con el elemento del medio de la lista.
-    Si el elemento que se busca es igual al elemento del medio, se ha encontrado el elemento y se devuelve su índice.
-    Si el elemento que se busca es menor que el elemento del medio, se repite el proceso con la mitad izquierda de la lista.
-    Si el elemento que se busca es mayor que el elemento del medio, se repite el proceso con la mitad derecha de la lista.
-    Se repite el proceso hasta que se encuentre el elemento o se determine que no está en la lista.
-    */
-    print(s, "final", "s");
-    /*
-    if (straggler != -1)
+    std::list<int>::iterator begin = s.begin();
+    std::list<int>::iterator end = s.end();
+    while (begin != end) 
     {
+        std::list<int>::iterator middle = begin;
+        std::advance(middle, std::distance(begin, end) / 2);
 
-    } */
-
-
+        if (straggler == *middle || (straggler < *middle && straggler > *std::prev(middle)))
+        {
+            s.insert(middle, straggler);
+            break;
+        } 
+        else if (straggler < *middle) 
+        {
+            end = middle;
+        } 
+        else 
+        {
+            begin = std::next(middle);
+        }
+    }
+    if (begin == end)
+    {
+        s.insert(begin, straggler);
+    }
+    print(s, "en una nueva", "s");
+    std::list<int> final_list;
+    int tmp;
+    std::list<int>::iterator it_tmp;
+    std::list<int>::iterator it = s.begin();
+    for (it = s.begin(); it != s.end(); it++)
+    {
+        tmp = *it;
+        for (it = s.begin(); it != s.end(); it++)
+        {
+            if (tmp > *it)
+            {
+                tmp = *it;
+                it_tmp = it;
+            }
+        }
+    std::cout << "tmp: " << tmp << std::endl;
+    final_list.push_back(tmp);
+    s.pop(*it_tmp);
+    }
+    
+    //print(final_list, "finalisimo", "s");
 }
 
 void PmergeMe::SortList(std::list<int> arr)
