@@ -6,13 +6,13 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 10:39:22 by roberto           #+#    #+#             */
-/*   Updated: 2024/03/18 11:25:44 by roberto          ###   ########.fr       */
+/*   Updated: 2024/11/08 14:52:22 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form::Form()
+Form::Form()  : _gradeSign(0), _gradeExec(0)
 {
 }
 
@@ -20,8 +20,7 @@ Form::~Form()
 {
 }
 
-Form::Form( std::string name, int gradeSign, int gradeExec) : _name(name),
- _gradeSign(gradeSign), _gradeExec(gradeExec), _sign(false)
+Form::Form( std::string name, int gradeSign, int gradeExec) : _name(name),  _sign(false), _gradeSign(gradeSign), _gradeExec(gradeExec)
 {
 	if (gradeSign < 1 || gradeExec < 1)
 	{
@@ -33,8 +32,7 @@ Form::Form( std::string name, int gradeSign, int gradeExec) : _name(name),
 	}
 }
 
-Form::Form(const Form &copy) : _name(copy._name), _gradeSign(copy._gradeSign),
-_gradeExec(copy._gradeExec), _sign(copy._sign)
+Form::Form(const Form &copy) : _name(copy._name), _sign(copy._sign), _gradeSign(copy._gradeSign), _gradeExec(copy._gradeExec)
 {
 	if (_gradeSign < 1 || _gradeExec < 1)
 	{
@@ -80,4 +78,18 @@ void Form::beSigned(const Bureaucrat &bureaucrat)
 	}
 	else
 		throw GradeTooLowException();
+}
+
+const char*	Form::GradeTooLowException::what() const throw() {
+	return "grade too low!";
+}
+
+const char*	Form::GradeTooHighException::what() const throw() {
+	return "grade too high!";
+}
+
+std::ostream&	operator<<(std::ostream &out, const Form& form)
+{
+	out	<< std::boolalpha << "Form: " << form.getName() << ", signed: " << form.getSign() << ", grade to sign " << form.getGradeSign()<< ", grade to execute " << form.getGradeExec() << std::endl;
+	return (out);
 }

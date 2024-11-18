@@ -6,17 +6,18 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 10:13:47 by roberto           #+#    #+#             */
-/*   Updated: 2024/03/18 10:36:56 by roberto          ###   ########.fr       */
+/*   Updated: 2024/11/08 13:13:42 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
+#include "Form.hpp"
 # include <iostream>
 # include <string>
 
-#include "Form.hpp"
+class Form;
 
 class Bureaucrat
 {

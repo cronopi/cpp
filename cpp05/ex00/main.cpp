@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 10:12:19 by roberto           #+#    #+#             */
-/*   Updated: 2024/03/15 10:48:07 by roberto          ###   ########.fr       */
+/*   Updated: 2024/11/08 12:10:10 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int main()
 {
-
 	Bureaucrat bur("Bob", 1);
 	try
 	{
@@ -25,7 +24,7 @@ int main()
 		std::cerr << e.what() << std::endl;
 	}
 
-	//bur.increment(); para comprobar que peta sin el try catch y aborta al ejecutar
+	//bur.increment(); //para comprobar que peta sin el try catch y aborta al ejecutar
 	try
 	{
 		bur.decrement();
@@ -38,7 +37,6 @@ int main()
 	std::cout << bur << std::endl;
 	bur.decrement();
 	std::cout << bur << std::endl;
-	bur.decrement();
 
 	return (0);
 

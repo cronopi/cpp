@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 10:37:28 by roberto           #+#    #+#             */
-/*   Updated: 2024/03/18 11:35:10 by roberto          ###   ########.fr       */
+/*   Updated: 2024/11/08 14:39:31 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ Bureaucrat::Bureaucrat()
 
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name), _grade(grade)
 {
-	//this->_grade = grade;
 	if (grade < 1)
 		throw GradeTooLowException();
 	else if (grade > 150)
@@ -31,7 +30,6 @@ Bureaucrat::~Bureaucrat()
 
 Bureaucrat::Bureaucrat(const Bureaucrat &copy) : _name(copy._name), _grade(copy._grade)
 {
-	//this->_grade = copy._grade;
 	if (this->_grade < 1)
 		throw GradeTooLowException();
 	else if (this->_grade > 150)
@@ -40,7 +38,6 @@ Bureaucrat::Bureaucrat(const Bureaucrat &copy) : _name(copy._name), _grade(copy.
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &copy)
 {
-//	this->_name = copy._name; al ser const no hace falta copiarlo
 	this->_grade = copy._grade;
 	return (*this);
 }
@@ -89,18 +86,18 @@ void Bureaucrat::signForm(Form &form) const
 {
 	if (form.getSign() == true)
 	{
-		std::cout << this->getName() << "couldn't sign" << form << "because it's already signed" << std::endl;
+		std::cout << this->getName() << " couldn't sign" << form << "because it's already signed" << std::endl;
 	}
 	else
 	{
 		try
 		{
 			form.beSigned(*this);
-			std::cout << this->getName() << "signed" << form << std::endl;
+			std::cout << this->getName() << " signed" << form << std::endl;
 		}
 		catch (const std::exception &e)
 		{
-			std::cout << this->getName() << "couldn't sign" << form << "because "<< e.what() << std::endl;
+			std::cout << this->getName() << " couldn't sign" << form << "because "<< e.what() << std::endl;
 		}
 	}
 }

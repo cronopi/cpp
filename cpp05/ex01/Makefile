@@ -4,7 +4,7 @@ CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = run
-SRC = main.cpp Bureaucrat.cpp
+SRC = main.cpp Bureaucrat.cpp Form.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

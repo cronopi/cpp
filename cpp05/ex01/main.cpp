@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 10:12:19 by roberto           #+#    #+#             */
-/*   Updated: 2024/03/15 10:48:07 by roberto          ###   ########.fr       */
+/*   Updated: 2024/11/15 12:37:16 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,22 @@ int main()
 {
 
 	Bureaucrat bur("Bob", 1);
+	std::cout << bur << std::endl;
+
 	try
 	{
-		bur.increment();
+		Form	formulary("formulary", 1, 1);
 	}
-	catch(const std::exception &e)
+	catch (std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	Form	formulary("formulary", 1, 1);
+	std::cout << formulary;
 
-	//bur.increment(); para comprobar que peta sin el try catch y aborta al ejecutar
-	try
-	{
-		bur.decrement();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	bur.signForm(formulary);
+	bur.signForm(formulary);
 
-	std::cout << bur << std::endl;
-	bur.decrement();
-	std::cout << bur << std::endl;
-	bur.decrement();
 
 	return (0);
-
-
 }
