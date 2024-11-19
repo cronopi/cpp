@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 10:13:47 by roberto           #+#    #+#             */
-/*   Updated: 2024/04/09 10:35:48 by roberto          ###   ########.fr       */
+/*   Updated: 2024/11/19 22:28:22 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ class Bureaucrat
 		void increment();
 		void decrement();
 		void signForm(Aform &form) const;
-		void executeForm(Aform &form) const;
+		void executeForm(Aform const &form) const;
 
 };
 		std::ostream &operator<<(std::ostream &out, const Bureaucrat &b);

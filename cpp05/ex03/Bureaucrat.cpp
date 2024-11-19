@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 10:37:28 by roberto           #+#    #+#             */
-/*   Updated: 2024/04/09 10:39:55 by roberto          ###   ########.fr       */
+/*   Updated: 2024/11/19 23:17:23 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,18 +90,18 @@ void Bureaucrat::signForm(Aform &form) const
 {
 	if (form.getSign() == true)
 	{
-		std::cout << this->getName() << "couldn't sign the form because it's already signed" << std::endl;
+		std::cout << this->getName() << " couldn't sign" << form << "because it's already signed" << std::endl;
 	}
 	else
 	{
 		try
 		{
 			form.beSigned(*this);
-			std::cout << this->getName() << "signed form" << std::endl;
+			std::cout << this->getName() << " signed" << form << std::endl;
 		}
 		catch (const std::exception &e)
 		{
-			std::cout << this->getName() << "couldn't sign form because "<< e.what() << std::endl;
+			std::cout << this->getName() << " couldn't sign" << form << "because "<< e.what() << std::endl;
 		}
 	}
 }
@@ -110,18 +110,18 @@ void Bureaucrat::executeForm(Aform &form) const
 {
 	if (form.getSign() == false)
 	{
-		std::cout << this->getName() << "couldn't execute form because it's not signed" << std::endl;
+		std::cout << this->getName() << "couldn't execute " << form << "because it's not signed" << std::endl;
 	}
 	else
 	{
 		try
 		{
 			form.execute(*this);
-			std::cout << this->getName() << "executed" << form << std::endl;
+			std::cout << this->getName() << " executed " << form << std::endl;
 		}
 		catch (const std::exception &e)
 		{
-			std::cout << this->getName() << "couldn't execute form because "<< e.what() << std::endl;
+			std::cout << this->getName() << "couldn't execute" << form  << "because "<< e.what() << std::endl;
 		}
 	}
 }

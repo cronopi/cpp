@@ -4,7 +4,7 @@ CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = run
-SRC = main.cpp Aform.cpp Bureaucrat.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
+SRC = main.cpp Intern.cpp Aform.cpp Bureaucrat.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

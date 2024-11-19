@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 10:10:42 by roberto           #+#    #+#             */
-/*   Updated: 2024/11/08 14:52:52 by roberto          ###   ########.fr       */
+/*   Updated: 2024/11/19 21:50:15 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ class Form
 	private:
 		const std::string	_name;
 		bool 				_sign;
-		const int 			_gradeSign;
-		const int 			_gradeExec;
+		const int			_gradeSign;
+		const int			_gradeExec;
 		class GradeTooHighException : public std::exception
 		{
 			virtual const char *what() const throw();

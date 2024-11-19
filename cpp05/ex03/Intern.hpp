@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 17:34:46 by roberto           #+#    #+#             */
-/*   Updated: 2024/04/15 18:01:37 by roberto          ###   ########.fr       */
+/*   Updated: 2024/11/19 14:33:48 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ private:
 		std::string name_compare;
 		Aform *(Intern::*makeform)(std::string target);
 	}				t_form;
+	class FormNotFoundException : public std::exception
+	{
+    	const char *what() const throw();
+	};
 public:
 	Intern();
 	~Intern();

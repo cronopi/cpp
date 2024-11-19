@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:39:28 by rcastano          #+#    #+#             */
-/*   Updated: 2024/04/09 11:08:08 by roberto          ###   ########.fr       */
+/*   Updated: 2024/11/19 14:52:09 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,11 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 		throw Aform::GradeTooLowException();
 	else
 	{
+		srand(time(NULL));
 		std::cout << "DRILLING NOISES" << std::endl;
 		if (rand() % 2 == 1)
 			std::cout << this->getTarget() << " has been robotomized successfully" << std::endl;
+		else
+			std::cout << "Robotomy failed" << std::endl;
 	}
 }

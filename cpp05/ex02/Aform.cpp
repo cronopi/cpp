@@ -50,12 +50,7 @@ Aform &Aform::operator=(const Aform &copy)
 
 std::ostream &operator<<(std::ostream &out, const Aform &b)
 {
-	out << "Form: " << b.getName()
-	<< ", sign: " << b.getSign()
-	<< ", gradeSign: " << b.getGradeSign()
-	<< ", gradeExec: " << b.getGradeExec()
-	<< ", target: " << b.getTarget()
-	<< std::endl;
+	out  << b.getName() << std::endl;
 	return (out);
 }
 

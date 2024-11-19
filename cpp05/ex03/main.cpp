@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 10:12:19 by roberto           #+#    #+#             */
-/*   Updated: 2024/04/09 11:11:26 by roberto          ###   ########.fr       */
+/*   Updated: 2024/11/19 23:13:00 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,28 @@
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
-
+#include "Intern.hpp"
 
 int main()
 {
    Bureaucrat javier("Javier", 1);
    Bureaucrat ana("Ana", 140);
+   Intern intern;
 
-   ShrubberyCreationForm form1("home");
-   PresidentialPardonForm form2("home");
-   RobotomyRequestForm form3("home");
+   try
+   {
+      //Aform *recoger_formulario = intern.makeform("robotomy request", "home");
+      //Aform *recoger_formulario = intern.makeform("shrubbery creation", "home");
+      Aform *recoger_formulario = intern.makeform("presidential pardon", "ana");
+      //Aform *recoger_formulario = intern.makeform("fail_test", "home");
 
-   ana.executeForm(form1);
-
-   javier.signForm(form1);
-   ana.signForm(form1);
-
-   ana.executeForm(form1);
-   ana.executeForm(form2);
-
-   javier.executeForm(form1);
-   javier.executeForm(form2);
-
+      javier.signForm(*recoger_formulario);
+      javier.executeForm(*recoger_formulario);
+   }
+   catch(const std::exception& e)
+   {
+      std::cerr << e.what() << '\n';
+   }
 
 	return (0);
 }

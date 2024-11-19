@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 17:38:43 by roberto           #+#    #+#             */
-/*   Updated: 2024/04/15 18:09:39 by roberto          ###   ########.fr       */
+/*   Updated: 2024/11/19 14:38:42 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,13 @@ Intern::~Intern()
 
 Intern::Intern(const Intern &copy)
 {
-
+	(void)copy;
+	return;
 }
 
 Intern &Intern::operator=(const Intern &copy)
 {
+	(void)copy;
 	return (*this);
 }
 
@@ -45,12 +47,18 @@ Aform *Intern::make_robotomy(std::string target)
 	return (new RobotomyRequestForm(target));
 }
 
+const char *Intern::FormNotFoundException::what() const throw()
+{
+    return "No se encontró una coincidencia para el formulario";
+}
+
 Aform *Intern::makeform(std::string name, std::string target)
 {
 	Aform *recoger_formulario;
 	int i;
 
 	i = 0;
+	recoger_formulario = NULL;
 	t_form form[] =
 	{
 		{"shrubbery creation", &Intern::make_shrubbery},
@@ -63,13 +71,12 @@ Aform *Intern::makeform(std::string name, std::string target)
 		if(form[i].name_compare == name)
 		{
 			recoger_formulario = (this->*form[i].makeform)(target);
+			std::cout << "Intern creates " << name << std::endl;
+			return (recoger_formulario);
 		}
 		i++;
 	}
-	if (i == 3)
-		return (0);
-
-	std::cout << "Intern creates " << recoger_formulario << std::endl;
+	throw FormNotFoundException();
 	return (recoger_formulario);
 }
 

@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 10:12:19 by roberto           #+#    #+#             */
-/*   Updated: 2024/11/08 14:54:07 by roberto          ###   ########.fr       */
+/*   Updated: 2024/11/19 23:05:28 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,23 @@ int main()
    Bureaucrat javier("Javier", 1);
    Bureaucrat ana("Ana", 140);
 
-   ShrubberyCreationForm form1("home");
-   PresidentialPardonForm form2("home");
+   ShrubberyCreationForm form1("hola");
+   PresidentialPardonForm form2("ana");
    RobotomyRequestForm form3("home");
 
-   ana.executeForm(form1);
-
    javier.signForm(form1);
-   ana.signForm(form1);
-
-   ana.executeForm(form1);
+   javier.executeForm(form1);
+   javier.signForm(form2);
+   javier.signForm(form2);
+   javier.executeForm(form2);
    ana.executeForm(form2);
 
-   javier.executeForm(form1);
-   javier.executeForm(form2);
+   ana.signForm(form3);
+   ana.executeForm(form3);
+   javier.signForm(form3);
+   javier.executeForm(form3);
+
+
 
 
 	return (0);

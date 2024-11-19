@@ -6,14 +6,14 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:39:28 by rcastano          #+#    #+#             */
-/*   Updated: 2024/04/09 11:08:08 by roberto          ###   ########.fr       */
+/*   Updated: 2024/11/19 23:04:07 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 #include "Aform.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm() : Aform("ShrubberyCreationForm", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm() : Aform("RobotomyRequestForm", 72, 45)
 {
 }
 
@@ -21,7 +21,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 {
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm &src): Aform("ShrubberyCreationForm", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm &src): Aform("RobotomyRequestForm", 72, 45)
 {
     std::cout << "RobotomyRequestForm Copy Constructor called to copy " << src.getName() <<
 	" into " << this->getName() << std::endl;
@@ -36,7 +36,7 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &s
 	return (*this);
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target): Aform("ShrubberyCreationForm", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(std::string target): Aform("RobotomyRequestForm", 72, 45)
 {
 	std::cout << "RobotomyRequestForm Constructor for target " << target << " called" << std::endl; //no debe imprimirse
 }
@@ -47,8 +47,11 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 		throw Aform::GradeTooLowException();
 	else
 	{
+		srand(time(NULL));
 		std::cout << "DRILLING NOISES" << std::endl;
 		if (rand() % 2 == 1)
-			std::cout << this->getTarget() << " has been robotomized successfully" << std::endl;
+			std::cout << this->getTarget() << "has been robotomized successfully" << std::endl;
+		else
+			std::cout << "Robotomy failed" << std::endl;
 	}
 }
