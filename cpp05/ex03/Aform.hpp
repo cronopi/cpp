@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 10:10:42 by roberto           #+#    #+#             */
-/*   Updated: 2024/04/09 10:40:26 by roberto          ###   ########.fr       */
+/*   Updated: 2024/11/20 23:10:48 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <string>
 # include "Bureaucrat.hpp"
+
 class Aform
 {
 	private:

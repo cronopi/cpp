@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 17:34:46 by roberto           #+#    #+#             */
-/*   Updated: 2024/11/19 14:33:48 by roberto          ###   ########.fr       */
+/*   Updated: 2024/11/20 23:32:27 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ public:
 	Aform *make_presidential(std::string target);
 	Aform *make_shrubbery(std::string target);
 	Aform *make_robotomy(std::string target);
+
+
 };
 
 #endif
