@@ -3,35 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 12:18:30 by rcastano          #+#    #+#             */
-/*   Updated: 2024/05/13 11:45:58 by rcastano         ###   ########.fr       */
+/*   Updated: 2024/11/26 15:07:28 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SERIALIZER_HPP
 # define SERIALIZER_HPP
 
-#include <string>
 #include <iostream>
+#include <string>
+#include <stdint.h>
 
 struct Data {
 	int	_id;
+	std::string _name;
 };
 
 class Serializer
 {
 	private:
-
-	public:
 		Serializer();
 		~Serializer();
 		Serializer(Serializer &src);
 		Serializer &operator=(const Serializer &src);
 
-		static int	serialize(Data* ptr);
-		static Data*		deserialize(int raw);
+	public:
+ 		static uintptr_t serialize(Data* ptr);
+		static Data* deserialize(uintptr_t raw);
 };
 
 #endif

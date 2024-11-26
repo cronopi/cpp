@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 11:03:11 by roberto           #+#    #+#             */
-/*   Updated: 2024/05/21 11:05:48 by roberto          ###   ########.fr       */
+/*   Updated: 2024/11/26 15:35:44 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define BASE_HPP
 
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 class Base
 {

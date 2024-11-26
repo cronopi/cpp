@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 10:52:40 by rcastano          #+#    #+#             */
-/*   Updated: 2024/05/02 18:07:54 by rcastano         ###   ########.fr       */
+/*   Updated: 2024/11/26 15:10:40 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,19 @@
 int	main(void)
 {
 
-	Data		data;
-	int			serialized;
+	Data		*data = new Data();
+	uintptr_t	serialized;
 	Data		*deserialized;
 
-	data._id = 5;
-	serialized = Serializer::serialize(&data);
+	data->_id = 057;
+	data->_name = "Roberto";
+	serialized = Serializer::serialize(data);
 	deserialized = Serializer::deserialize(serialized);
 
-	if(deserialized == &data)
+	if(deserialized == data)
 		std::cout << "el deserialized es igual al pointer original" << std::endl;
 	else
 		std::cout << "el deserialized NO es igual al pointer original" << std::endl;
+	delete data;
 	return (0);
 }
