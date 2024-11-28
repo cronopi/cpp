@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:03:45 by rcastano          #+#    #+#             */
-/*   Updated: 2024/05/02 18:00:15 by rcastano         ###   ########.fr       */
+/*   Updated: 2024/11/22 13:23:32 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,34 +16,35 @@
 #include <string>
 #include <iostream>
 #include <cstdlib>
+#include <cmath>
+#include <climits>
 
 
 class ScalarConverter
 {
 	private:
-		char	_c;
-		int		_i;
-		float	_f;
-		double	_d;
-	public:
 		ScalarConverter();
 		~ScalarConverter();
 		ScalarConverter(ScalarConverter &src);
 		ScalarConverter &operator=(const ScalarConverter &src);
+	public:
 
 		static void convert(std::string literal);
 };
-		int	IsChar(std::string literal);
-		int	IsInt(std::string literal);
-		int	IsFloat(std::string literal, int number);
-		int	IsDouble(std::string literal, int number);
+	int		IsChar(std::string literal);
+	int		IsInt(std::string literal);
+	int		IsFloat(std::string literal, int number);
+	int		IsDouble(std::string literal, int number);
 
 
-		void	PrintChar(char c);
-		void	PrintInt(std::string literal);
-		void	PrintFloat(std::string literal);
-		void	PrintDouble(std::string literal);
+	void	PrintChar(char c);
+	void	PrintInt(int i);
+	void	PrintFloat(std::string literal);
+	void	PrintDouble(std::string literal);
 
-		char	ConvertToChar(std::string literal);
+	char	ConvertToChar(std::string literal);
+	int		ConvertToInt(std::string literal);
+	float	ConvertToFloat(std::string literal);
+	double	ConvertToDouble(std::string literal);
 
 #endif
