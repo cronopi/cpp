@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 15:29:58 by rcastano          #+#    #+#             */
-/*   Updated: 2024/05/21 10:21:29 by roberto          ###   ########.fr       */
+/*   Updated: 2024/12/02 15:15:27 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Array
 		T *elements;
 		Array()
 		{
-			elements = NULL;
+			elements = new T[0];
 		}
 		Array(unsigned int n)
 		{
@@ -60,14 +60,13 @@ class Array
 			}
 			return (*this);
 		}
-		Array &operator[](int i)
+		T &operator[](int i)
 		{
-			if (i < 0 || i >= _lenght)
+			if (i < 0 || i >= _lenght || _lenght == 0)
 			{
-				throw OutOfBoundsException();
+				throw Array<T>::OutOfBoundsException();
 			}
 			return (elements[i]);
-
 		}
 		~Array()
 		{
@@ -81,12 +80,14 @@ class Array
 
 		class OutOfBoundsException : public std::exception
 		{
-			virtual const char *what() const throw()
-			{
-				return ("Error: Out of bounds");
-			}
-		}
-
+			virtual const char *what() const throw();
+		};
 };
+
+template< typename T >
+const char	*Array<T>::OutOfBoundsException::what() const throw()
+{
+	return ("Error: index out of bounds");
+}
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 12:39:38 by rcastano          #+#    #+#             */
-/*   Updated: 2024/11/26 16:34:28 by roberto          ###   ########.fr       */
+/*   Updated: 2024/12/01 21:46:39 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Base *generate(void)
 
 void identify(Base* p)
 {
-	if ( dynamic_cast<A*>(p) != NULL)
+	if (dynamic_cast<A*>(p) != NULL)
 	{
 		std::cout << "A" << std::endl;
 	}
@@ -48,19 +48,19 @@ void identify(Base& p)
 	std::cout << "Identify by reference" << std::endl;
 	try
 	{
-		(void)dynamic_cast<A&>(p);
+		dynamic_cast<A&>(p);
 		std::cout << "A" << std::endl;
 	}
 	catch(const std::exception &e){}
 	try
 	{
-		(void)dynamic_cast<B&>(p);
+		dynamic_cast<B&>(p);
 		std::cout << "B" << std::endl;
 	}
 	catch(const std::exception &e){}
 	try
 	{
-		(void)dynamic_cast<C&>(p);
+		dynamic_cast<C&>(p);
 		std::cout << "C" << std::endl;
 	}
 	catch(const std::exception &e){}
