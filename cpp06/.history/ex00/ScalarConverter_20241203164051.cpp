@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:20:39 by rcastano          #+#    #+#             */
-/*   Updated: 2024/12/04 12:21:55 by roberto          ###   ########.fr       */
+/*   Updated: 2024/12/03 16:40:52 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ void	PrintChar(char c)
 {
 	std::cout << "Char: ";
 	if (c == '?')
-		std::cout << "impossible" << std::endl;
+		std::cout << " impossible" << std::endl;
 	else if ( c >= 32 && c <= 126)
 		std::cout << c << std::endl;
 	else
@@ -150,9 +150,7 @@ void	PrintFloat(float literal)
 	else if (std::isnan(literal))
 		std::cout << "Float: " << literal << std::endl;
 	else if (std::isinf(literal))
-	{
 		std::cout << "Float: " << literal << std::endl;
-	}
 	else if (literal != std::floor(literal))
 		std::cout << "Float: " << literal  << "f" << std::endl;
 	else
@@ -225,113 +223,48 @@ int ConvertToInt(std::string literal)
 
 float ConvertToFloat(std::string literal)
 {
-	if (literal == "nanf")
-	{
-		return (float(NAN));
-	}
-	else if (literal == "+inff")
-	{
-		return (INFINITY);
-	}
-	else if (literal == "-inff")
-	{
-		return (-INFINITY);
-	}
-	else if (INT_MAX < std::atof(literal.c_str()) || INT_MIN > std::atof(literal.c_str()))
+	if (INT_MAX < std::atof(literal.c_str()) || INT_MIN > std::atof(literal.c_str()))
 	{
 		return (INT_MIN);
 	}
-	std::istringstream iss(literal);
-    float number;
-    iss >> number;
-	return (number);
-}
-
-double ConvertToDouble(std::string literal)
-{
-	if ( literal == "nan")
+	else if (literal == "nanf" || literal == "nan")
 	{
-		return (NAN);
+		return (float(NAN));
 	}
-	else if ( literal == "+inf")
+	else if (literal == "+inff" || literal == "+inf")
 	{
 		std::cout << literal << std::endl;
 		return (INFINITY);
 	}
-	else if ( literal == "-inf")
+	else if (literal == "-inff" || literal == "-inf")
 	{
+		std::cout << literal << std::endl;
 		return (-INFINITY);
-	}
-	else if (INT_MAX < std::atof(literal.c_str()) || INT_MIN > std::atof(literal.c_str()))
-	{
-		return (INT_MIN);
 	}
 	return (std::atof(literal.c_str()));
 }
 
-char Inttochar(int number)
+double ConvertToDouble(std::string literal)
 {
-	char num;
-	if (number < -128 || number > 127)
-		return ('?');
-	num = number + '0';
-	return (num);
-}
-
-int floattoint(float number)
-{
-	int num;
-	if (number < -2147483648 || number > 2147483647)
-		return (INT_MIN);
-	num = number;
-	return (num);
-}
-
-char floattochar(float number)
-{
-	char num;
-	if (number < -128 || number > 127)
+	if (INT_MAX < std::atof(literal.c_str()) || INT_MIN > std::atof(literal.c_str()))
 	{
-		return ('?');
-	}
-	num = number + '0';
-	return (num);
-}
-
-char doubletochar(double number)
-{
-	char num;
-	if (number < -128 || number > 127)
-		return ('?');
-	num = number + '0';
-	return (num);
-}
-
-int doubletoint(double number)
-{
-	int num;
-	if (number < -2147483648 || number > 2147483647)
 		return (INT_MIN);
-	num = number;
-	return (num);
-}
-
-float doubletofloat(double number)
-{
-	float num;
-	if (std::isinf(number))
-	{
-		if (number > 0)
-			return (INFINITY);
-		else
-			return (-INFINITY);
 	}
-	if (std::isnan(number))
-		return (NAN);
-	if (number < -2147483648 || number > 2147483647)
-		return ('?');
-	num = number;
-	return (num);
+	else if (literal == "nanf" || literal == "nan")
+	{
+		return (float(NAN));
+	}
+	else if (literal == "+inff" || literal == "+inf")
+	{
+		std::cout << literal << std::endl;
+		return (INFINITY);
+	}
+	else if (literal == "-inff" || literal == "-inf")
+	{
+		std::cout << literal << std::endl;
+		return (-INFINITY);
+	}
+	return (std::atof(literal.c_str()));
 }
 
 void ScalarConverter::convert(std::string literal)
@@ -340,50 +273,56 @@ void ScalarConverter::convert(std::string literal)
 	{
 		char c;
 		int	i;
+		float f;
+		double d;
+		c = ConvertToChar(literal);
 		i = ConvertToInt(literal);
-		c = Inttochar(i);
+		f = ConvertToFloat(literal);
+		d = ConvertToDouble(literal);
 		PrintChar(c);
 		PrintInt(i);
-		std::cout << "Float: " << std::fixed << std::setprecision(1) << static_cast<float>(i) << "f" << std::endl;
-		std::cout << "Double: " <<  std::fixed << std::setprecision(1) << static_cast<double>(i)  << std::endl;
+		PrintFloat(f);
+		PrintDouble(d);
 	}
 	else if (IsChar(literal) == 0)
 	{
-		char c;
-		c = literal[0];
-		PrintChar(c);
+		PrintChar(literal[0]);
 		std::cout << "Int: " << static_cast<int>(literal[0]) << std::endl;
 		std::cout << "Float: " << static_cast<float>(literal[0]) << ".0f" << std::endl;
 		std::cout << "Double: " << static_cast<double>(literal[0]) << ".0" << std::endl;
 	}
- 	else if (IsFloat(literal) == 0)
+	else if (IsFloat(literal) == 0)
 	{
-		char c = '\0';
-		int	i = 0;
+		char c;
+		int	i;
 		float f;
+		double d;
+		c = ConvertToChar(literal);
+		i = ConvertToInt(literal);
 		f = ConvertToFloat(literal);
-		c = floattochar(f);
-		i = floattoint(f);
+		d = ConvertToDouble(literal);
 		PrintChar(c);
 		PrintInt(i);
 		PrintFloat(f);
-		std::cout << "Double: " << static_cast<double>(f) << std::endl;
+		PrintDouble(d);
 	}
 	else if (IsDouble(literal) == 0)
 	{
-		char c = '\0';
-		int	i = 0;
-		float f = 0;
+		char c;
+		int	i;
+		float f;
 		double d;
+		c = ConvertToChar(literal);
+		i = ConvertToInt(literal);
+		f = ConvertToFloat(literal);
 		d = ConvertToDouble(literal);
-		c = doubletochar(d);
-		i = doubletoint(d);
-		f = doubletofloat(d);
 		PrintChar(c);
 		PrintInt(i);
 		PrintFloat(f);
 		PrintDouble(d);
 	}
 	else
+	{
 		std::cout << "conversion does not make any sense" << std::endl;
+	}
 }

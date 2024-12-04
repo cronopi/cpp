@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:03:45 by rcastano          #+#    #+#             */
-/*   Updated: 2024/11/22 13:23:32 by roberto          ###   ########.fr       */
+/*   Updated: 2024/12/04 12:23:33 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 #include <cstdlib>
 #include <cmath>
 #include <climits>
-
+#include <iomanip>
+#include <sstream>
 
 class ScalarConverter
 {
@@ -46,5 +47,12 @@ class ScalarConverter
 	int		ConvertToInt(std::string literal);
 	float	ConvertToFloat(std::string literal);
 	double	ConvertToDouble(std::string literal);
+
+	float	doubletofloat(double d);
+	int		doubletoint(double d);
+	char	doubletochar(double d);
+	char	floattochar(float f);
+	int		floattoint(float f);
+	char	inttochar(int i);
 
 #endif
