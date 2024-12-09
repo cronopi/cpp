@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 10:52:40 by rcastano          #+#    #+#             */
-/*   Updated: 2024/12/02 15:46:19 by roberto          ###   ########.fr       */
+/*   Updated: 2024/12/09 13:35:04 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int main(void)
 
     try
     {
+/*         int *a = new int();
+        std::cout << *a << std::endl; */
         test[0] = 42;
         test[1] = 43;
         test[2] = 44;

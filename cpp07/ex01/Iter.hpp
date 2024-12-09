@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:03:45 by rcastano          #+#    #+#             */
-/*   Updated: 2024/12/02 14:09:23 by roberto          ###   ########.fr       */
+/*   Updated: 2024/12/09 12:54:46 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include <iostream>
 
 template <typename T>
-void iter(char *adress, int lengh, void(*f)(T))
+void iter(T *adress, int lengh, void(*f)(T))
 {
 	int i;
 
 	i = 0;
-	if (adress == NULL)
+	if (adress == NULL || f == NULL)
 		return;
 	while(i < lengh)
 	{
