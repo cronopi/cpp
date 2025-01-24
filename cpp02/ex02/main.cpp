@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Easyfind.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 15:29:58 by rcastano          #+#    #+#             */
-/*   Updated: 2024/12/09 14:40:22 by roberto          ###   ########.fr       */
+/*   Created: 2023/12/17 23:24:44 by roberto           #+#    #+#             */
+/*   Updated: 2023/12/19 02:41:29 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-# define EASYFIND_HPP
+#include "Fixed.hpp"
 
-#include <string>
-#include <iostream>
-#include <set>
-
-template <typename T>
-int Easyfind(T container, int n)
+int main(void)
 {
-	typename T::iterator it;
-	it = container.begin();
-	while (it != container.end())
-	{
-		if (*it == n)
-			return (0);
+	Fixed a;
+	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
 
-		it++;
-	}
-	return (1);
-}
+	std::cout << a << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
 
-#endif
+	std::cout << b << std::endl;
+
+	std::cout << Fixed::max( a, b ) << std::endl;
+
+	return (0);
+};

@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Easyfind.hpp                                       :+:      :+:    :+:   */
+/*   Phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 15:29:58 by rcastano          #+#    #+#             */
-/*   Updated: 2024/12/09 14:40:22 by roberto          ###   ########.fr       */
+/*   Created: 2023/12/04 16:28:13 by roberto           #+#    #+#             */
+/*   Updated: 2024/07/22 12:35:19 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-# define EASYFIND_HPP
+#ifndef PHONEBOOK_HPP
 
-#include <string>
-#include <iostream>
-#include <set>
+# define PHONEBOOK_HPP
 
-template <typename T>
-int Easyfind(T container, int n)
+# include	<iomanip>
+# include	"Contact.hpp"
+# include	<limits>
+# include	<cctype>
+#include	<regex>
+#include	<string>
+#include	<iterator>
+
+class Phonebook
 {
-	typename T::iterator it;
-	it = container.begin();
-	while (it != container.end())
-	{
-		if (*it == n)
-			return (0);
-
-		it++;
-	}
-	return (1);
-}
+	private:
+		Contact		_contacts[8];
+		int			_index;
+		int			_n_of_contacts;
+	public:
+		Phonebook();
+		~Phonebook();
+		void add_contact();
+		void search_contact();
+		bool ft_empty(std::string input, bool b);
+};
 
 #endif

@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Easyfind.hpp                                       :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 15:29:58 by rcastano          #+#    #+#             */
-/*   Updated: 2024/12/09 14:40:22 by roberto          ###   ########.fr       */
+/*   Created: 2023/12/14 12:32:55 by roberto           #+#    #+#             */
+/*   Updated: 2024/07/26 11:14:52 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-# define EASYFIND_HPP
+#ifndef WEAPON_HPP
 
-#include <string>
-#include <iostream>
-#include <set>
+# define WEAPON_HPP
 
-template <typename T>
-int Easyfind(T container, int n)
+# include <iostream>
+# include <string>
+
+class Weapon
 {
-	typename T::iterator it;
-	it = container.begin();
-	while (it != container.end())
-	{
-		if (*it == n)
-			return (0);
+	private:
+		std::string	_type;
+	public:
+		Weapon();
+		~Weapon();
 
-		it++;
-	}
-	return (1);
-}
+		Weapon(std::string type);
+		const std::string	getType() const;
+		void				setType(std::string new_type);
+};
 
 #endif

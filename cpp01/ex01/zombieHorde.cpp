@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Easyfind.hpp                                       :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 15:29:58 by rcastano          #+#    #+#             */
-/*   Updated: 2024/12/09 14:40:22 by roberto          ###   ########.fr       */
+/*   Created: 2023/12/09 16:51:29 by roberto           #+#    #+#             */
+/*   Updated: 2023/12/16 11:21:10 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-# define EASYFIND_HPP
+#include "Zombie.hpp"
 
-#include <string>
-#include <iostream>
-#include <set>
-
-template <typename T>
-int Easyfind(T container, int n)
+Zombie* zombieHorde(int N, std::string name)
 {
-	typename T::iterator it;
-	it = container.begin();
-	while (it != container.end())
+	int i = 0;
+	Zombie *horde = new Zombie[N];
+
+	while(i < N)
 	{
-		if (*it == n)
-			return (0);
-
-		it++;
+		horde[i].setname(name);
+		i++;
 	}
-	return (1);
+	return (horde);
 }
-
-#endif

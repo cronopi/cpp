@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Easyfind.hpp                                       :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 15:29:58 by rcastano          #+#    #+#             */
-/*   Updated: 2024/12/09 14:40:22 by roberto          ###   ########.fr       */
+/*   Created: 2023/12/09 17:15:04 by roberto           #+#    #+#             */
+/*   Updated: 2023/12/16 11:20:56 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-# define EASYFIND_HPP
+#ifndef ZOMBIE_HPP
 
-#include <string>
-#include <iostream>
-#include <set>
+# define ZOMBIE_HPP
 
-template <typename T>
-int Easyfind(T container, int n)
+# include <iostream>
+# include <string>
+
+class	Zombie
 {
-	typename T::iterator it;
-	it = container.begin();
-	while (it != container.end())
-	{
-		if (*it == n)
-			return (0);
-
-		it++;
-	}
-	return (1);
-}
-
+	private:
+		std::string	_name;
+	public:
+		void	announce( void );
+		void	setname(std::string name);
+		//constructor
+		Zombie();
+		//destructor
+		~Zombie();
+};
+	Zombie* zombieHorde( int N, std::string name );
 #endif

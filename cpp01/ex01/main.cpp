@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Easyfind.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 15:29:58 by rcastano          #+#    #+#             */
-/*   Updated: 2024/12/09 14:40:22 by roberto          ###   ########.fr       */
+/*   Created: 2023/12/09 16:27:01 by roberto           #+#    #+#             */
+/*   Updated: 2024/07/26 10:42:08 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-# define EASYFIND_HPP
+#include "Zombie.hpp"
 
-#include <string>
-#include <iostream>
-#include <set>
-
-template <typename T>
-int Easyfind(T container, int n)
+int	main(void)
 {
-	typename T::iterator it;
-	it = container.begin();
-	while (it != container.end())
+	Zombie	*horde;
+	int i = 0;
+	int n = 3;
+
+	horde = zombieHorde(n, "for the horde!");
+	while (i < n)
 	{
-		if (*it == n)
-			return (0);
-
-		it++;
+		horde[i].announce();
+		i++;
 	}
-	return (1);
+	delete [] horde;
+	return (0);
 }
-
-#endif

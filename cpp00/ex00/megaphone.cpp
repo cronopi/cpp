@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Easyfind.hpp                                       :+:      :+:    :+:   */
+/*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 15:29:58 by rcastano          #+#    #+#             */
-/*   Updated: 2024/12/09 14:40:22 by roberto          ###   ########.fr       */
+/*   Created: 2023/12/04 13:59:26 by roberto           #+#    #+#             */
+/*   Updated: 2023/12/04 13:59:42 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-# define EASYFIND_HPP
-
-#include <string>
 #include <iostream>
-#include <set>
 
-template <typename T>
-int Easyfind(T container, int n)
+int	main(int argc, char **argv)
 {
-	typename T::iterator it;
-	it = container.begin();
-	while (it != container.end())
+	int i = 0;
+	int j = 1;
+
+	if (argc == 1)
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+	else
 	{
-		if (*it == n)
-			return (0);
-
-		it++;
+		while(argv[j] != NULL)
+		{
+			i = 0;
+			while(argv[j][i] != '\0')
+			{
+				std::cout << (char)std::toupper(argv[j][i]);
+				i++;
+			}
+			j++;
+		}
+		std::cout << std::endl;
 	}
-	return (1);
+	return (0);
 }
-
-#endif

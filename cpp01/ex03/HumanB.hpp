@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Easyfind.hpp                                       :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 15:29:58 by rcastano          #+#    #+#             */
-/*   Updated: 2024/12/09 14:40:22 by roberto          ###   ########.fr       */
+/*   Created: 2023/12/14 12:55:30 by roberto           #+#    #+#             */
+/*   Updated: 2023/12/16 12:14:32 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-# define EASYFIND_HPP
+#ifndef HUMANB_HPP
 
-#include <string>
-#include <iostream>
-#include <set>
+# define HUMANB_HPP
 
-template <typename T>
-int Easyfind(T container, int n)
+# include "Weapon.hpp"
+
+class HumanB
 {
-	typename T::iterator it;
-	it = container.begin();
-	while (it != container.end())
-	{
-		if (*it == n)
-			return (0);
-
-		it++;
-	}
-	return (1);
-}
+	private:
+		std::string	_name;
+		Weapon		*_weapon;
+	public:
+		HumanB();
+		~HumanB();
+		HumanB(std::string name);
+		void attack(void);
+		void setWeapon(Weapon &new_weapon);
+};
 
 #endif

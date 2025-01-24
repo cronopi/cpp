@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Easyfind.hpp                                       :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 15:29:58 by rcastano          #+#    #+#             */
-/*   Updated: 2024/12/09 14:40:22 by roberto          ###   ########.fr       */
+/*   Created: 2023/12/22 13:17:04 by roberto           #+#    #+#             */
+/*   Updated: 2023/12/22 13:36:11 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-# define EASYFIND_HPP
+#ifndef FRAGTRAP_HPP
 
-#include <string>
-#include <iostream>
-#include <set>
+# define FRAGTRAP_HPP
 
-template <typename T>
-int Easyfind(T container, int n)
+# include "FragTrap.hpp"
+# include "ScavTrap.hpp"
+
+class FragTrap: public ClapTrap
 {
-	typename T::iterator it;
-	it = container.begin();
-	while (it != container.end())
-	{
-		if (*it == n)
-			return (0);
+	private:
 
-		it++;
-	}
-	return (1);
-}
+		FragTrap();
+	public:
+		FragTrap(std::string name);
+		~FragTrap();
+		FragTrap(const FragTrap &other);
+		FragTrap &operator=(const FragTrap &other);
+
+		void highFivesGuys(void);
+};
 
 #endif

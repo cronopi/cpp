@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Easyfind.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 15:29:58 by rcastano          #+#    #+#             */
-/*   Updated: 2024/12/09 14:40:22 by roberto          ###   ########.fr       */
+/*   Created: 2023/12/08 13:59:39 by roberto           #+#    #+#             */
+/*   Updated: 2024/07/26 10:48:19 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-# define EASYFIND_HPP
+#include "Zombie.hpp"
 
-#include <string>
-#include <iostream>
-#include <set>
-
-template <typename T>
-int Easyfind(T container, int n)
+int	main(void)
 {
-	typename T::iterator it;
-	it = container.begin();
-	while (it != container.end())
-	{
-		if (*it == n)
-			return (0);
+	Zombie	*zombie;
+	Zombie	zombie2("manolo");
 
-		it++;
-	}
-	return (1);
+	zombie = newZombie("roberto");
+	randomChump("alvaro");
+	zombie->announce();
+	zombie2.announce();
+	delete zombie;
+	return (0);
 }
-
-#endif

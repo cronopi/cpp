@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Easyfind.hpp                                       :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 15:29:58 by rcastano          #+#    #+#             */
-/*   Updated: 2024/12/09 14:40:22 by roberto          ###   ########.fr       */
+/*   Created: 2023/12/17 23:28:27 by roberto           #+#    #+#             */
+/*   Updated: 2023/12/18 22:08:10 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-# define EASYFIND_HPP
+#ifndef FIXED_HPP
+# define FIXED_HPP
 
-#include <string>
-#include <iostream>
-#include <set>
+# include <iostream>
 
-template <typename T>
-int Easyfind(T container, int n)
+class Fixed
 {
-	typename T::iterator it;
-	it = container.begin();
-	while (it != container.end())
-	{
-		if (*it == n)
-			return (0);
+	private:
+		int _fixed_point_number;
+		static const int _fractional_bits = 8;
 
-		it++;
-	}
-	return (1);
-}
+	public:
+		Fixed();
+		~Fixed();
+		Fixed(const Fixed &other);
+		Fixed & operator=( Fixed const & rhs);
+		int getRawBits( void ) const;
+		void setRawBits( int const raw );
+};
 
 #endif

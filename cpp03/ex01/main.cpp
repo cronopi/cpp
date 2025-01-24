@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Easyfind.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 15:29:58 by rcastano          #+#    #+#             */
-/*   Updated: 2024/12/09 14:40:22 by roberto          ###   ########.fr       */
+/*   Created: 2023/12/19 03:33:25 by roberto           #+#    #+#             */
+/*   Updated: 2023/12/22 13:13:50 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-# define EASYFIND_HPP
+#include "ScavTrap.hpp"
 
-#include <string>
-#include <iostream>
-#include <set>
-
-template <typename T>
-int Easyfind(T container, int n)
+int	main(void)
 {
-	typename T::iterator it;
-	it = container.begin();
-	while (it != container.end())
-	{
-		if (*it == n)
-			return (0);
+    ClapTrap    jerry("jerry");
+    ScavTrap    tom("tom");
 
-		it++;
-	}
-	return (1);
+
+    jerry.attack(tom.getName());
+    tom.attack(jerry.getName());
+    jerry.takeDamage(tom.getAttackDamage());
+    jerry.beRepaired(10);
+
+    tom.guardGate();
+
+	return (0);
 }
-
-#endif

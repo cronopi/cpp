@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Easyfind.hpp                                       :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 15:29:58 by rcastano          #+#    #+#             */
-/*   Updated: 2024/12/09 14:40:22 by roberto          ###   ########.fr       */
+/*   Created: 2023/12/22 12:35:38 by roberto           #+#    #+#             */
+/*   Updated: 2023/12/22 12:48:43 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-# define EASYFIND_HPP
+#ifndef SCAVTRAP_HPP
 
-#include <string>
-#include <iostream>
-#include <set>
+# define SCAVTRAP_HPP
 
-template <typename T>
-int Easyfind(T container, int n)
+# include "ClapTrap.hpp"
+
+class ScavTrap: public ClapTrap
 {
-	typename T::iterator it;
-	it = container.begin();
-	while (it != container.end())
-	{
-		if (*it == n)
-			return (0);
+	private:
 
-		it++;
-	}
-	return (1);
-}
+		ScavTrap();
+	public:
+		ScavTrap(std::string name);
+		~ScavTrap();
+		ScavTrap(const ScavTrap &other);
+		ScavTrap &operator=(const ScavTrap &other);
+		void attack(const std::string &target);
+		void guardGate();
+};
 
-#endif
+# endif
