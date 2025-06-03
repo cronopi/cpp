@@ -7,7 +7,7 @@
 # include <list>
 #include <ctime>
 #include <iomanip>
-
+#include <cstdlib>
 class PmergeMe
 {
 	private:
@@ -26,7 +26,7 @@ class PmergeMe
 		std::list<int> build_jacob_insertion_sequence(int length);
 		PmergeMe(char **argv);
 		void SortList(std::list<int> arr);
-		void Sortbypair(std::list<std::pair<int, int>> sorted_pares);
+		void Sortbypair(std::list<std::pair<int, int> > sorted_pares);
 
 
 		template <typename Container>
@@ -35,7 +35,7 @@ class PmergeMe
 
 
 		void SortVector(std::vector<int> vec);
-		void Sortbypair_vector(std::vector<std::pair<int, int>> sorted_pares);
+		void Sortbypair_vector(std::vector<std::pair<int, int> > sorted_pares);
 		std::vector<int> build_jacob_insertion_sequence_vector(int lenght);
 };
 

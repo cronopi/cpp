@@ -70,13 +70,13 @@ std::list<int> PmergeMe::build_jacob_insertion_sequence(int length)
     return (sequence);
 }
 
-void PmergeMe::Sortbypair(std::list<std::pair<int, int>> sorted_pares)
+void PmergeMe::Sortbypair(std::list<std::pair<int, int> > sorted_pares)
 {
     std::list<int> s;
     std::list<int> pend;
     std::list<int> insertion_sequence;
 
-    for(std::list<std::pair<int, int>>::iterator it = sorted_pares.begin(); it != sorted_pares.end(); it++)
+    for(std::list<std::pair<int, int> >::iterator it = sorted_pares.begin(); it != sorted_pares.end(); it++)
     {
         pend.push_back(it->first);
         s.push_back(it->second);
@@ -93,10 +93,10 @@ void PmergeMe::Sortbypair(std::list<std::pair<int, int>> sorted_pares)
     int i = 0;
     for (std::list<int>::iterator it = pend.begin(); it != pend.end(); ++it)
     {
-        auto insertion_it = insertion_sequence.begin();
+        std::list<int>::iterator insertion_it = insertion_sequence.begin();
         std::advance(insertion_it, i); // avanzar el iterador a la posición i
         int index = *insertion_it;
-        auto insert_it = s.begin();
+        std::list<int>::iterator insert_it = s.begin();
         std::advance(insert_it, index); // move the iterator to the correct position
         s.insert(insert_it, *it);
         i++;
@@ -109,7 +109,7 @@ void PmergeMe::Sortbypair(std::list<std::pair<int, int>> sorted_pares)
         std::list<int>::iterator middle = begin;
         std::advance(middle, std::distance(begin, end) / 2);
 
-        if (straggler == *middle || (straggler < *middle && straggler > *std::prev(middle)))
+        if (straggler == *middle || (straggler < *middle && straggler > *(--middle)))
         {
             s.insert(middle, straggler);
             break;
@@ -120,7 +120,7 @@ void PmergeMe::Sortbypair(std::list<std::pair<int, int>> sorted_pares)
         }
         else
         {
-            begin = std::next(middle);
+            begin = ++middle;
         }
     }
     if (begin == end)
@@ -148,8 +148,8 @@ void PmergeMe::Sortbypair(std::list<std::pair<int, int>> sorted_pares)
 
 void PmergeMe::SortList(std::list<int> arr)
 {
-    std::list<std::pair<int, int>> pares;
-    std::list<std::pair<int, int>> sorted_pares;
+    std::list<std::pair<int, int> > pares;
+    std::list<std::pair<int, int> > sorted_pares;
     int tmp = 0;
     straggler = -1;
 	if (arr.size() <= 1)
@@ -161,13 +161,19 @@ void PmergeMe::SortList(std::list<int> arr)
         //std::cout << "straggler: " << straggler << std::endl;
         arr.pop_back();
     }
-    for (std::list<int>::iterator it = arr.begin(); it != arr.end();)
+/*     for (std::list<int>::iterator it = arr.begin(); it != arr.end();)
     {
         pares.emplace_back(*it, *std::next(it));
         it++;
         it++;
+    } */
+    for (std::list<int>::iterator it = arr.begin(); it != arr.end();)
+    {
+        pares.push_back(std::make_pair(*it, *(it++)));
+        it++;
     }
-    for (std::list<std::pair<int, int>>::iterator it = pares.begin(); it != pares.end(); it++)
+
+    for (std::list<std::pair<int, int> >::iterator it = pares.begin(); it != pares.end(); it++)
     {
         if (it->first > it->second)
         {
@@ -181,8 +187,8 @@ void PmergeMe::SortList(std::list<int> arr)
     {
         tmp = 2147483647;
         int tmp2 = 2147483647;
-        std::list<std::pair<int, int>>::iterator it;
-        std::list<std::pair<int, int>>::iterator it_tmp;
+        std::list<std::pair<int, int> >::iterator it;
+        std::list<std::pair<int, int> >::iterator it_tmp;
         for (it = pares.begin(); it != pares.end(); it++)
         {
             if (tmp > it->second)
@@ -192,7 +198,8 @@ void PmergeMe::SortList(std::list<int> arr)
                 it_tmp = it;
             }
         }
-        sorted_pares.emplace_back(tmp2, tmp);
+        //sorted_pares.emplace_back(tmp2, tmp);
+        sorted_pares.push_back(std::make_pair(tmp2, tmp));
         pares.erase(it_tmp);
         it = pares.begin();
     }
@@ -223,12 +230,12 @@ std::vector<int> PmergeMe::build_jacob_insertion_sequence_vector(int lenght)
     return (sequence);
 }
 
-void PmergeMe::Sortbypair_vector(std::vector<std::pair<int, int>> sorted_pares)
+void PmergeMe::Sortbypair_vector(std::vector<std::pair<int, int> > sorted_pares)
 {
     std::vector<int> s;
     std::vector<int> pend;
     std::vector<int> insertion_sequence;
-    for (std::vector<std::pair<int, int>>::iterator it = sorted_pares.begin(); it != sorted_pares.end(); it++)
+    for (std::vector<std::pair<int, int> >::iterator it = sorted_pares.begin(); it != sorted_pares.end(); it++)
     {
         s.push_back(it->first);
         pend.push_back(it->second);
@@ -238,17 +245,32 @@ void PmergeMe::Sortbypair_vector(std::vector<std::pair<int, int>> sorted_pares)
 
     insertion_sequence = build_jacob_insertion_sequence_vector(pend.size());
 
+    std::cout << "por aqui si pasa" << std::endl;
     int i = 0;
     for (std::vector<int>::iterator it = pend.begin(); it != pend.end(); it++)
     {
         std::vector<int>::iterator insertion_it = insertion_sequence.begin();
         std::advance(insertion_it, i);
-        int index = *insertion_it;
-        std::vector<int>::iterator insert_it = s.begin();
-        std::advance(insert_it, index);
-        s.insert(insert_it, *it);
+        unsigned int index = *insertion_it;
+
+        if (index >= s.size())
+        {
+            s.push_back(*it);
+        }
+        else
+        {
+            std::vector<int>::iterator insert_it = s.begin();
+            std::advance(insert_it, index);
+            if (it == pend.end())
+            {
+                std::cerr << "Error: it fuera de límites" << std::endl;
+                break;
+            }
+            s.insert(insert_it, *it);
+        }
         i++;
     }
+    std::cout << "estoy llegnado hasta aqui?" << std::endl;
     std::vector<int>::iterator begin = s.begin();
     std::vector<int>::iterator end = s.end();
     while (begin != end && straggler != -1)
@@ -256,7 +278,7 @@ void PmergeMe::Sortbypair_vector(std::vector<std::pair<int, int>> sorted_pares)
         std::vector<int>::iterator middle = begin;
         std::advance(middle, std::distance(begin, end) / 2);
 
-        if (straggler == *middle || (straggler < *middle && straggler > *std::prev(middle)))
+        if (straggler == *middle || (straggler < *middle && straggler > *(--middle)))
         {
             s.insert(middle, straggler);
             break;
@@ -267,7 +289,7 @@ void PmergeMe::Sortbypair_vector(std::vector<std::pair<int, int>> sorted_pares)
         }
         else
         {
-            begin = std::next(middle);
+            begin = ++middle;
         }
     }
     if (begin == end)
@@ -276,15 +298,15 @@ void PmergeMe::Sortbypair_vector(std::vector<std::pair<int, int>> sorted_pares)
     while (swap == true)
     {
         swap = false;
-        for (std::vector<int>::iterator it = s.begin(); it != std::prev(s.end()); it++)
+        for (std::vector<int>::iterator it = s.begin(); it != s.end() - 1; it++)
         {
             std::vector<int>::iterator next_it = it;
             next_it++;
-            if (*it > *std::next(it))
+            if (*it > *next_it)
             {
                 int tmp = *it;
-                *it = *std::next(it);
-                *std::next(it) = tmp;
+                *it = *next_it;
+                *next_it = tmp;
                 swap = true;
             }
         }
@@ -294,8 +316,8 @@ void PmergeMe::Sortbypair_vector(std::vector<std::pair<int, int>> sorted_pares)
 
 void PmergeMe::SortVector(std::vector<int> vec)
 {
-    std::vector<std::pair<int, int>> pares;
-    std::vector<std::pair<int, int>> sorted_pares;
+    std::vector<std::pair<int, int> > pares;
+    std::vector<std::pair<int, int> > sorted_pares;
     int tmp = 0;
     straggler = -1;
     if (vec.size() <= 1)
@@ -306,13 +328,20 @@ void PmergeMe::SortVector(std::vector<int> vec)
         straggler = vec.back();
         vec.pop_back();
     }
-    for (std::vector<int>::iterator it = vec.begin(); it != vec.end();)
+/*     for (std::vector<int>::iterator it = vec.begin(); it != vec.end();)
     {
         pares.emplace_back(*it, *std::next(it));
         it++;
         it++;
+    } */
+    for (std::vector<int>::iterator it = vec.begin(); it != vec.end();)
+    {
+        pares.push_back(std::make_pair(*it, *(it + 1)));
+        it++;
+        it++;
     }
-    for (std::vector<std::pair<int, int>>::iterator it = pares.begin(); it != pares.end(); it++)
+
+    for (std::vector<std::pair<int, int> >::iterator it = pares.begin(); it != pares.end(); it++)
     {
         if (it->first > it->second)
         {
@@ -325,8 +354,8 @@ void PmergeMe::SortVector(std::vector<int> vec)
     {
         tmp = 2147483647;
         int tmp2 = 2147483647;
-        std::vector<std::pair<int, int>>::iterator it;
-        std::vector<std::pair<int, int>>::iterator it_tmp;
+        std::vector<std::pair<int, int> >::iterator it;
+        std::vector<std::pair<int, int> >::iterator it_tmp;
         for (it = pares.begin(); it != pares.end(); it++)
         {
             if (tmp > it->second)
@@ -336,7 +365,8 @@ void PmergeMe::SortVector(std::vector<int> vec)
                 it_tmp = it;
             }
         }
-        sorted_pares.emplace_back(tmp2, tmp);
+        //sorted_pares.emplace_back(tmp2, tmp);
+        sorted_pares.push_back(std::make_pair(tmp2, tmp));
         pares.erase(it_tmp);
         it = pares.begin();
     }
@@ -354,10 +384,18 @@ PmergeMe::PmergeMe(char **argv)
     {
         tmp = 0;
         j = 0;
-		while (argv[i][j] != '\0' &&argv[i][j] >= '0' && argv[i][j] <= '9')
+		while (argv[i][j] != '\0')
 		{
-			tmp = tmp * 10 + (argv[i][j] - '0');
-            j++;
+            if (argv[i][j] >= '0' && argv[i][j] <= '9')
+            {
+                tmp = tmp * 10 + (argv[i][j] - '0');
+                j++;
+            }
+            else
+            {
+                std::cerr << "Error: caracter inválido" << std::endl;
+                std::exit(1);
+            }
 		}
         lst.push_back(tmp);
         i++;
@@ -370,10 +408,18 @@ PmergeMe::PmergeMe(char **argv)
     {
         tmp = 0;
         j = 0;
-		while (argv[i][j] != '\0' &&argv[i][j] >= '0' && argv[i][j] <= '9')
+		while (argv[i][j] != '\0')
 		{
-			tmp = tmp * 10 + (argv[i][j] - '0');
-            j++;
+             if (argv[i][j] >= '0' && argv[i][j] <= '9')
+            {
+                tmp = tmp * 10 + (argv[i][j] - '0');
+                j++;
+            }
+            else
+            {
+                std::cerr << "Error: caracter inválido" << std::endl;
+                std::exit(1);
+            }
 		}
         vec.push_back(tmp);
         i++;

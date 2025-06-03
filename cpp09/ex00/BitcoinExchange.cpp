@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 19:52:47 by roberto           #+#    #+#             */
-/*   Updated: 2025/05/21 14:41:52 by roberto          ###   ########.fr       */
+/*   Updated: 2025/05/22 13:58:29 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,6 +198,7 @@ void BitcoinExchange::checkFile(char *argv)
 	std::ifstream	file;
 	std::string		line;
 	size_t			pos;
+	std::string		d;
 
 	file.open(argv);
 	if (!file.is_open())
@@ -212,14 +213,17 @@ void BitcoinExchange::checkFile(char *argv)
 		if (pos == std::string::npos)
 		{
 			tmp = line.substr(0, pos);
-			date.push_back(tmp);
-			exchange.push_back(0.0);
+			//date_and_exchange[tmp]= 0.0;
+			date_and_exchange.insert(std::pair<std::string,float>(tmp,0.0));
+			//date.push_back(tmp);
+			//exchange.push_back(0.0);
 			continue;
 		}
 		tmp = line.substr(0, pos);
 		tmp.erase(0, tmp.find_first_not_of(" \t\r\n"));
 		tmp.erase(tmp.find_last_not_of(" \t\r\n") + 1);
-		date.push_back(tmp);
+		//date.push_back(tmp);
+		d = tmp;
 
 		tmp = line.substr(pos + 1);
 		tmp.erase(0, tmp.find_first_not_of(" \t\r\n"));
@@ -235,38 +239,44 @@ void BitcoinExchange::checkFile(char *argv)
 			}
 		}
 		if (tmp ==  "notnumber")
-			exchange.push_back(std::numeric_limits<float>::quiet_NaN());
+			//date_and_exchange[d]= std::numeric_limits<float>::quiet_NaN();^
+			date_and_exchange.insert(std::pair<std::string,float>(d,std::numeric_limits<float>::quiet_NaN()));
+			//exchange.push_back(std::numeric_limits<float>::quiet_NaN());
 		else
 		{
 			std::istringstream iss2(tmp);
 			iss2 >> tmp_float;
-			exchange.push_back(tmp_float);
+			//exchange.push_back(tmp_float);
+			//date_and_exchange[d] = tmp_float;
+			date_and_exchange.insert(std::pair<std::string,float>(d,tmp_float));
 		}
 	}
 
- 	for (size_t i = 0; i < date.size(); i++)
+ 	//for (size_t i = 0; i < date.size(); i++)
+	for(std::map<std::string,float>::iterator it = date_and_exchange.begin(); it != date_and_exchange.end(); it++)
 	{
+		std::string date = it->first;
+		float value = it->second;
+		std::map<std::string, int> fields = split(date);
 
-		std::map<std::string, int> fields = split(date[i]);
-
-		if (date[i].length() != 10)
+		if (date.length() != 10)
 		{
-			if (date[i].empty())
+			if (date.empty())
 				std::cerr << "Error: bad input => empty" << std::endl;
 			else
-			std::cerr << "Error: bad input => " << date[i] << std::endl;
+			std::cerr << "Error: bad input => " << date << std::endl;
 		}
 		else
 		{
 			if (fields["correct"] == 0)
 			{
-				std::cerr << "Error: bad input => " << date[i] << std::endl;
+				std::cerr << "Error: bad input => " << date << std::endl;
 			}
 			else
 			{
 				if (fields["year"] < 2009 || (fields["year"] == 2009 && fields["month"] == 1 && fields["day"] == 1))
 				{
-					std::cerr << "Error: bad input => " << date[i] << std::endl;
+					std::cerr << "Error: bad input => " << date << std::endl;
 				}
 				else if (fields["year"] > 2022 || (fields["year"] == 2022 && (fields["month"] > 3 || (fields["month"] == 3 && fields["day"] > 29))))
 				{
@@ -274,21 +284,21 @@ void BitcoinExchange::checkFile(char *argv)
 				}
 				else
 				{
-					if (exchange[i] < 0)
+					if (value < 0)
 						std::cerr << "Error: not a positive number. " << std::endl;
-					else if (exchange[i] > 1000)
+					else if (value > 1000)
 						std::cerr << "Error: too large number. " << std::endl;
-					else if (std::isnan(exchange[i]))
+					else if (std::isnan(value))
 						std::cerr << "Error: incorrect value" << std::endl;
 					else
 					{
-						std::map<std::string, float>::iterator it = data.begin();
-						for (it = data.begin(); it != data.end(); it++)
+
+						for (std::map<std::string, float>::iterator it = data.begin(); it != data.end(); it++)
 						{
-							if (date[i] < it->first)
+							if (date < it->first)
 							{
 								it--;
-								std::cout << date[i] << " => " << exchange[i] << " = " << exchange[i] * it->second << std::endl;
+								std::cout << date << " => " << value << " = " << value * (it->second) << std::endl;
 								break;
 							}
 						}
