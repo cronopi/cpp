@@ -1,0 +1,146 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Span.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/26 10:14:00 by roberto           #+#    #+#             */
+/*   Updated: 2025/08/12 14:59:06 by roberto          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Span.hpp"
+
+Span::Span()
+{
+	_lenght = 0;
+	_i = 0;
+}
+
+Span::~Span()
+{
+}
+
+Span::Span(const Span &copy)
+{
+	std::cout << " Span copy constructor called" << std::endl;
+	_i = copy._i;
+	_lenght = copy._lenght;
+	*this = copy;
+}
+
+Span &Span::operator=(const Span &copy)
+{
+	if (this != &copy)
+	{
+		*this = copy;
+	}
+	return (*this);
+}
+
+Span::Span(unsigned int numbers_lenght)
+{
+	_lenght = numbers_lenght + 1;
+	_i = 0;
+	this->_Container.reserve(_lenght);
+}
+
+const char * Span::SpanException::what() const throw()
+{
+	return ("por favor, introduzca numeros validos");
+}
+
+void Span::addNumber(int nbr)
+{
+	if (_i >= _lenght)
+	{
+		std::cout <<"Has introducido mas numeros de los que puedes almacenar " << std::endl;
+		throw Span::SpanException();
+	}
+	this->_Container.push_back(nbr);
+	this->_i++;
+}
+
+/* void Span::fill(unsigned int size)
+{
+	srand(time(NULL));
+	for (unsigned int i = 0; i < size; i++)
+        {
+            addNumber(rand() % 70);
+        }
+} */
+
+void Span::fill(unsigned int size)
+{
+    srand48(time(NULL)); // inicializa la semilla
+    for (unsigned int i = 0; i < size; i++)
+    {
+        addNumber(lrand48() % 1000000); // genera un número aleatorio entre 0 y 49999
+    }
+}
+
+/* int	Span::shortestSpan() //se compara el numero consigo mismo, tambien en longest
+{
+	int shortest = 2147483647;
+	int tmp;
+	unsigned int i = 0;
+	unsigned int j = 0;
+
+	tmp = shortest;
+	if (_i < 2)
+	{
+		std::cout << "Has introducido menos de dos numeros" << std::endl;
+		throw Span::SpanException();
+	}
+	for (i = 0; i < _Container.size(); i++)
+	{
+		for (j = 0; j < _Container.size(); j++)
+		{
+			if (i != j)
+				tmp = std::abs(_Container[i] - _Container[j]);
+			std::cout << _Container[i] << " - " << _Container[j] << " = "<<  (_Container[i] - _Container[j]) << std::endl;
+			if (tmp < shortest)
+				shortest = tmp;
+		}
+		std::cout << "______________________"  << std::endl;
+	}
+	return (shortest);
+} */
+int	Span::shortestSpan()
+{
+	int shortest = 2147483647;
+	int tmp;
+	unsigned int i = 0;
+
+	tmp = shortest;
+	if (_i < 2)
+	{
+		std::cout << "Has introducido menos de dos numeros" << std::endl;
+		throw Span::SpanException();
+	}
+	std::vector<int> tmpVector = _Container;
+	std::sort(tmpVector.begin(), tmpVector.end());
+	for (i = 0; i < tmpVector.size() - 1; i++)
+	{
+		tmp = std::abs(tmpVector[i + 1] - tmpVector[i]);
+		std::cout << tmpVector[i] << " - " << tmpVector[i + 1] << " = "<<  (tmpVector[i + 1] - tmpVector[i]) << std::endl;
+		if (tmp < shortest)
+			shortest = tmp;
+	}
+	std::cout << "______________________"  << std::endl;
+	return (shortest);
+}
+
+
+int Span::longestSpan()
+{
+	if (_i < 2)
+	{
+		std::cout << "Has introducido menos de dos numeros" << std::endl;
+		throw Span::SpanException();
+	}
+	std::vector<int> tmpVector = _Container;
+	std::sort(tmpVector.begin(), tmpVector.end());
+	return (tmpVector[tmpVector.size() - 1] - tmpVector[0]);
+}
