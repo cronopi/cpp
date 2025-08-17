@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:03:45 by rcastano          #+#    #+#             */
-/*   Updated: 2025/08/16 13:24:27 by roberto          ###   ########.fr       */
+/*   Updated: 2025/08/16 13:24:11 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ T		min(T const a, T const b)
 {
 	if (a < b)
 		return a;
-	else if (b > a)
+	else if (b >= a)
 		return (b);
 	else
 		return (b);
