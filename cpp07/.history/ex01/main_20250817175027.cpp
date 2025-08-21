@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 10:52:40 by rcastano          #+#    #+#             */
-/*   Updated: 2025/08/17 17:51:12 by roberto          ###   ########.fr       */
+/*   Updated: 2025/08/17 17:50:27 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ int main(void)
 
     iter(tab, 4, (void(*)(int))NULL);
     iter(tab, 4, print);
-    iter(tab, 4, TemplateTest<int >);
+    iter(NULL, 4, TemplateTest<int >);
     return (0);
 }

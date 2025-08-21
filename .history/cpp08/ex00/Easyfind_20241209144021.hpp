@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/16 10:52:40 by rcastano          #+#    #+#             */
-/*   Updated: 2025/08/17 17:51:12 by roberto          ###   ########.fr       */
+/*   Created: 2024/05/14 15:29:58 by rcastano          #+#    #+#             */
+/*   Updated: 2024/12/09 14:40:22 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Iter.hpp"
+#ifndef EASYFIND_HPP
+# define EASYFIND_HPP
+
+#include <string>
+#include <iostream>
+#include <set>
 
 template <typename T>
-void print(T c)
+int Easyfind(T container, int n)
 {
-    std::cout << c << std::endl;
+	typename T::iterator it;
+	it = container.begin();
+	while (it != container.end())
+	{
+		if (*it == n)
+			return (0);
+
+		it++;
+	}
+	return (1);
 }
 
-void toupper(char c)
-{
-    std::cout << (char)std::toupper(c) << std::endl;
-}
-
-int main(void)
-{
-    char ptr[] = "test";
-    int tab[] = {1, 2, 3, 4};
-
-    iter(ptr, 4, print);
-    iter(ptr, 4, toupper);
-    iter(ptr, 4, TemplateTest<char >);
-
-    iter(tab, 4, (void(*)(int))NULL);
-    iter(tab, 4, print);
-    iter(tab, 4, TemplateTest<int >);
-    return (0);
-}
+#endif

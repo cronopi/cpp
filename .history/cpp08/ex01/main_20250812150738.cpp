@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 10:52:40 by rcastano          #+#    #+#             */
-/*   Updated: 2025/08/20 15:53:03 by roberto          ###   ########.fr       */
+/*   Updated: 2025/08/12 15:07:39 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ int main(void)
     }
     try
     {
-        Span example = Span(10);
-        example.fill(10);
+        Span example = Span(10000);
+        example.fill(10000);
         std::cout << example.shortestSpan() << " es el numero con menor diferencia\n" << std::endl;
         std::cout << example.longestSpan() << " es el numero con mayor diferencia\n" << std::endl;
     }

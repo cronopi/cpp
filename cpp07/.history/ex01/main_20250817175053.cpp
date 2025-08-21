@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 10:52:40 by rcastano          #+#    #+#             */
-/*   Updated: 2025/08/17 17:51:12 by roberto          ###   ########.fr       */
+/*   Updated: 2025/08/17 17:50:52 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void toupper(char c)
 int main(void)
 {
     char ptr[] = "test";
-    int tab[] = {1, 2, 3, 4};
+    int tab[] = NULL;
 
     iter(ptr, 4, print);
     iter(ptr, 4, toupper);

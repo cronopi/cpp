@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 15:29:58 by rcastano          #+#    #+#             */
-/*   Updated: 2025/08/20 14:51:55 by roberto          ###   ########.fr       */
+/*   Updated: 2025/08/20 14:50:45 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <string>
 #include <iostream>
 #include <set>
-#include <algorithm>
 
 template <typename T>
 int Easyfind(T container, int n)

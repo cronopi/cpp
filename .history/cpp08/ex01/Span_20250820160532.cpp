@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:14:00 by roberto           #+#    #+#             */
-/*   Updated: 2025/08/20 16:09:00 by roberto          ###   ########.fr       */
+/*   Updated: 2025/08/20 16:05:32 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,13 +106,14 @@ int Span::longestSpan()
 	}
 	std::sort(_Container.begin(), _Container.end());
 
-	for (std::vector<int>::iterator it = _Container.begin(); it != _Container.end(); ++it)
+	for (unsigned int i = 0; i < _Container.size(); i++)
 	{
-	std::cout << *it << " ";
+	std::cout << _Container[i] << " ";
 	}
 	std::cout << std::endl;
 
 	int longest = _Container.back() - _Container.front();
+	std::cout << "Longest span: " << longest << std::endl;
 	std::cout << "______________________"  << std::endl;
 	return (longest);
 }

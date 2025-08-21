@@ -3,37 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 10:52:40 by rcastano          #+#    #+#             */
-/*   Updated: 2025/08/17 17:51:12 by roberto          ###   ########.fr       */
+/*   Updated: 2024/12/09 12:15:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Iter.hpp"
-
-template <typename T>
-void print(T c)
-{
-    std::cout << c << std::endl;
-}
-
-void toupper(char c)
-{
-    std::cout << (char)std::toupper(c) << std::endl;
-}
+#include "Whatever.hpp"
 
 int main(void)
 {
-    char ptr[] = "test";
-    int tab[] = {1, 2, 3, 4};
-
-    iter(ptr, 4, print);
-    iter(ptr, 4, toupper);
-    iter(ptr, 4, TemplateTest<char >);
-
-    iter(tab, 4, (void(*)(int))NULL);
-    iter(tab, 4, print);
-    iter(tab, 4, TemplateTest<int >);
+    float a = 2;
+    float b = 3;
+    ::swap( a, b );
+    std::cout << "a = " << a << ", b = " << b << std::endl;
+    std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
+    std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
+    std::string c = "chaine1";
+    std::string d = "chaine2";
+    ::swap(c, d);
+    std::cout << "c = " << c << ", d = " << d << std::endl;
+    std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
+    std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
     return (0);
 }

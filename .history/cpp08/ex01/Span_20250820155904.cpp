@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:14:00 by roberto           #+#    #+#             */
-/*   Updated: 2025/08/20 16:09:00 by roberto          ###   ########.fr       */
+/*   Updated: 2025/08/20 15:59:04 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,9 @@ int	Span::shortestSpan()
 
 int Span::longestSpan()
 {
+	int	longest = 0;
+	int	tmp = 0;
+
 	if (_i < 2)
 	{
 		std::cout << "Has introducido menos de dos numeros" << std::endl;
@@ -106,13 +109,16 @@ int Span::longestSpan()
 	}
 	std::sort(_Container.begin(), _Container.end());
 
-	for (std::vector<int>::iterator it = _Container.begin(); it != _Container.end(); ++it)
-	{
-	std::cout << *it << " ";
-	}
-	std::cout << std::endl;
+	std::vector<int>::iterator it = _Container.begin() + 1;
+	std::vector<int>::iterator end = _Container.end();
 
-	int longest = _Container.back() - _Container.front();
+	for (; it != end; ++it)
+	{
+		tmp = std::abs(*it - *(it - 1));
+		std::cout << *(it - 1) << " - " << *it << " = " << tmp << std::endl;
+		if (tmp > longest)
+			longest = tmp;
+	}
 	std::cout << "______________________"  << std::endl;
 	return (longest);
 }
