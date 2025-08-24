@@ -89,16 +89,19 @@ void PmergeMe::Sortbypair(std::deque<std::pair<int, int> > sorted_pares)
 	//print(insertion_sequence, "list", "insertion_sequence");
 
 	int i = 0;
-	for (std::deque<int>::iterator it = pend.begin(); it != pend.end(); ++it)
-	{
-		std::deque<int>::iterator insertion_it = insertion_sequence.begin();
-		std::advance(insertion_it, i);
-		unsigned int index = *insertion_it % s.size();
-		if (index >= s.size())
-			exit(1);
-		s.insert(s.begin() + index, *it);
-		i++;
-	}
+for (std::deque<int>::iterator it = pend.begin(); it != pend.end(); ++it)
+{
+    std::deque<int>::iterator insertion_it = insertion_sequence.begin();
+    std::advance(insertion_it, i);
+   	unsigned int index = *insertion_it % s.size();
+    if (index >= s.size()) {
+        exit(1);
+    }
+    s.insert(s.begin() + index, *it);
+    i++;
+}
+	std::cout << "y aqui no llegas" << std::endl;
+
 	std::deque<int>::iterator begin = s.begin();
 	std::deque<int>::iterator end = s.end();
 	while (begin != end && straggler != -1)
@@ -140,7 +143,7 @@ void PmergeMe::Sortbypair(std::deque<std::pair<int, int> > sorted_pares)
 		}
 	}
 
-	//print(s, "after", "s");
+	print(s, "after", "s");
 	print_time_to_process("list");
 }
 
@@ -236,6 +239,7 @@ void PmergeMe::Sortbypair_vector(std::vector<std::pair<int, int> > sorted_pares)
 
 	insertion_sequence = build_jacob_insertion_sequence_vector(pend.size());
 
+	std::cout << "por aqui si pasa" << std::endl;
 	int i = 0;
 	for (std::vector<int>::iterator it = pend.begin(); it != pend.end(); it++)
 	{
@@ -260,6 +264,7 @@ void PmergeMe::Sortbypair_vector(std::vector<std::pair<int, int> > sorted_pares)
 		}
 		i++;
 	}
+	std::cout << "estoy llegnado hasta aqui?" << std::endl;
 	std::vector<int>::iterator begin = s.begin();
 	std::vector<int>::iterator end = s.end();
 	while (begin != end && straggler != -1)
@@ -301,12 +306,11 @@ void PmergeMe::Sortbypair_vector(std::vector<std::pair<int, int> > sorted_pares)
 		}
 	}
 
-/* 	std::cout << "Vector ordenado: ";
+	std::cout << "Vector ordenado: ";
 	for (unsigned int i = 0; i < s.size(); i++) {
 		std::cout << s[i] << " ";
 	}
 	std::cout << std::endl;
-	*/
 	print_time_to_process("vector");
 }
 
@@ -324,6 +328,12 @@ void PmergeMe::SortVector(std::vector<int> vec)
 		straggler = vec.back();
 		vec.pop_back();
 	}
+/*     for (std::vector<int>::iterator it = vec.begin(); it != vec.end();)
+	{
+		pares.emplace_back(*it, *std::next(it));
+		it++;
+		it++;
+	} */
 	for (std::vector<int>::iterator it = vec.begin(); it != vec.end();)
 	{
 		pares.push_back(std::make_pair(*it, *(it + 1)));
@@ -355,6 +365,7 @@ void PmergeMe::SortVector(std::vector<int> vec)
 				it_tmp = it;
 			}
 		}
+		//sorted_pares.emplace_back(tmp2, tmp);
 		sorted_pares.push_back(std::make_pair(tmp2, tmp));
 		pares.erase(it_tmp);
 		it = pares.begin();
@@ -390,7 +401,7 @@ PmergeMe::PmergeMe(char **argv)
 		dq.push_back(tmp);
 		i++;
 	}
-	//print(dq, "before", "before");
+	print(dq, "before", "before");
 	SortDeque(dq);
 	start_time = clock();
 	i = 1;
@@ -414,6 +425,6 @@ PmergeMe::PmergeMe(char **argv)
 		vec.push_back(tmp);
 		i++;
 	}
-	//print(vec, "before", "before");
+	print(vec, "before", "before");
 	SortVector(vec);
 }

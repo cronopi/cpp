@@ -415,5 +415,5 @@ PmergeMe::PmergeMe(char **argv)
 		i++;
 	}
 	//print(vec, "before", "before");
-	SortVector(vec);
+	//SortVector(vec);
 }

@@ -6,7 +6,7 @@
 /*   By: roberto <roberto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 17:16:46 by roberto           #+#    #+#             */
-/*   Updated: 2025/08/21 19:54:57 by roberto          ###   ########.fr       */
+/*   Updated: 2025/08/21 19:54:38 by roberto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int main(void)
 
 	std::cout << mstack.top() << std::endl;
 	std::cout << std::endl;
-	std::cout << "ejemplo de List" << std::endl;
+	std::cout << "List" << std::endl;
 
 	std::list<int> lst;
 

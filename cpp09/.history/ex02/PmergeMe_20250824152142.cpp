@@ -49,6 +49,26 @@ void PmergeMe::print(const Container& container, const std::string& tipo, std::s
 	}
 }
 
+/* std::list<int> PmergeMe::build_jacob_insertion_sequence(int length)
+{
+	std::list<int> sequence;
+	sequence.push_back(1);
+	sequence.push_back(3);
+
+	int a = 1;
+	int b = 3;
+	int next;
+	for (int i = 2; i < length; i++)
+	{
+		next = a + b + 1;
+		sequence.push_back(next);
+		a = b;
+		b = next;
+	}
+
+	return (sequence);
+} */
+
 std::deque<int> PmergeMe::build_jacob_insertion_sequence(int length)
 {
 	std::deque<int> sequence;
@@ -88,22 +108,26 @@ void PmergeMe::Sortbypair(std::deque<std::pair<int, int> > sorted_pares)
 	insertion_sequence = build_jacob_insertion_sequence(pend.size());
 	//print(insertion_sequence, "list", "insertion_sequence");
 
+	std::cout << "por aqui si pasa" << std::endl;
 	int i = 0;
-	for (std::deque<int>::iterator it = pend.begin(); it != pend.end(); ++it)
+	for (std::list<int>::iterator it = pend.begin(); it != pend.end(); ++it)
 	{
-		std::deque<int>::iterator insertion_it = insertion_sequence.begin();
-		std::advance(insertion_it, i);
-		unsigned int index = *insertion_it % s.size();
-		if (index >= s.size())
-			exit(1);
-		s.insert(s.begin() + index, *it);
+		std::list<int>::iterator insertion_it = insertion_sequence.begin();
+		 std::cout << "i: " << i << ", insertion_it: " << *insertion_it << std::endl;
+		std::advance(insertion_it, i); // avanzar el iterador a la posición i
+		int index = *insertion_it;
+		std::list<int>::iterator insert_it = s.begin();
+		std::advance(insert_it, index); // move the iterator to the correct position
+		s.insert(insert_it, *it);
 		i++;
 	}
-	std::deque<int>::iterator begin = s.begin();
-	std::deque<int>::iterator end = s.end();
+	std::cout << "y aqui no llegas" << std::endl;
+
+	std::list<int>::iterator begin = s.begin();
+	std::list<int>::iterator end = s.end();
 	while (begin != end && straggler != -1)
 	{
-		std::deque<int>::iterator middle = begin;
+		std::list<int>::iterator middle = begin;
 		std::advance(middle, std::distance(begin, end) / 2);
 
 		if (straggler == *middle || (straggler < *middle && straggler > *(--middle)))
@@ -126,9 +150,9 @@ void PmergeMe::Sortbypair(std::deque<std::pair<int, int> > sorted_pares)
 	while(swap == true)
 	{
 		swap = false;
-		for(std::deque<int>::iterator it = s.begin(); it != s.end(); it++)
+		for(std::list<int>::iterator it = s.begin(); it != s.end(); it++)
 		{
-			std::deque<int>::iterator next_it = it;
+			std::list<int>::iterator next_it = it;
 			next_it++;
 			if (next_it != s.end() && *it > *next_it)
 			{
@@ -140,9 +164,233 @@ void PmergeMe::Sortbypair(std::deque<std::pair<int, int> > sorted_pares)
 		}
 	}
 
-	//print(s, "after", "s");
+	print(s, "after", "s");
 	print_time_to_process("list");
 }
+
+void PmergeMe::Sortbypair(std::deque<std::pair<int, int> > sorted_pares)
+{
+	std::deque<int> s;
+	std::deque<int> pend;
+	std::deque<int> insertion_sequence;
+
+	for(std::deque<std::pair<int, int> >::iterator it = sorted_pares.begin(); it != sorted_pares.end(); it++)
+	{
+		pend.push_back(it->first);
+		s.push_back(it->second);
+	}
+	s.push_front(pend.front());
+	pend.pop_front();
+	//print(pend, "list", "pend");
+	//print(s, "list", "s");
+
+	insertion_sequence = build_jacob_insertion_sequence(pend.size());
+	//print(insertion_sequence, "list", "insertion_sequence");
+
+	std::cout << "por aqui si pasa" << std::endl;
+	int i = 0;
+	for (std::list<int>::iterator it = pend.begin(); it != pend.end(); ++it)
+	{
+		std::list<int>::iterator insertion_it = insertion_sequence.begin();
+		 std::cout << "i: " << i << ", insertion_it: " << *insertion_it << std::endl;
+		std::advance(insertion_it, i); // avanzar el iterador a la posición i
+		int index = *insertion_it;
+		std::list<int>::iterator insert_it = s.begin();
+		std::advance(insert_it, index); // move the iterator to the correct position
+		s.insert(insert_it, *it);
+		i++;
+	}
+	std::cout << "y aqui no llegas" << std::endl;
+
+	std::list<int>::iterator begin = s.begin();
+	std::list<int>::iterator end = s.end();
+	while (begin != end && straggler != -1)
+	{
+		std::list<int>::iterator middle = begin;
+		std::advance(middle, std::distance(begin, end) / 2);
+
+		if (straggler == *middle || (straggler < *middle && straggler > *(--middle)))
+		{
+			s.insert(middle, straggler);
+			break;
+		}
+		else if (straggler < *middle)
+		{
+			end = middle;
+		}
+		else
+		{
+			begin = ++middle;
+		}
+	}
+	if (begin == end)
+	s.insert(begin, straggler);
+	int swap = true;
+	while(swap == true)
+	{
+		swap = false;
+		for(std::list<int>::iterator it = s.begin(); it != s.end(); it++)
+		{
+			std::list<int>::iterator next_it = it;
+			next_it++;
+			if (next_it != s.end() && *it > *next_it)
+			{
+				int temp = *it;
+				*it = *next_it;
+				*next_it = temp;
+				swap = true;
+			}
+		}
+	}
+
+	print(s, "after", "s");
+	print_time_to_process("list");
+}
+
+/* void PmergeMe::Sortbypair(std::list<std::pair<int, int> > sorted_pares)
+{
+	std::list<int> s;
+	std::list<int> pend;
+	std::list<int> insertion_sequence;
+
+	for(std::list<std::pair<int, int> >::iterator it = sorted_pares.begin(); it != sorted_pares.end(); it++)
+	{
+		pend.push_back(it->first);
+		s.push_back(it->second);
+	}
+	s.push_front(pend.front());
+	pend.pop_front();
+	//print(pend, "list", "pend");
+	//print(s, "list", "s");
+
+	insertion_sequence = build_jacob_insertion_sequence(pend.size());
+	//print(insertion_sequence, "list", "insertion_sequence");
+
+	std::cout << "por aqui si pasa" << std::endl;
+	int i = 0;
+	for (std::list<int>::iterator it = pend.begin(); it != pend.end(); ++it)
+	{
+		std::list<int>::iterator insertion_it = insertion_sequence.begin();
+		 std::cout << "i: " << i << ", insertion_it: " << *insertion_it << std::endl;
+		std::advance(insertion_it, i); // avanzar el iterador a la posición i
+		int index = *insertion_it;
+		std::list<int>::iterator insert_it = s.begin();
+		std::advance(insert_it, index); // move the iterator to the correct position
+		s.insert(insert_it, *it);
+		i++;
+	}
+	std::cout << "y aqui no llegas" << std::endl;
+
+	std::list<int>::iterator begin = s.begin();
+	std::list<int>::iterator end = s.end();
+	while (begin != end && straggler != -1)
+	{
+		std::list<int>::iterator middle = begin;
+		std::advance(middle, std::distance(begin, end) / 2);
+
+		if (straggler == *middle || (straggler < *middle && straggler > *(--middle)))
+		{
+			s.insert(middle, straggler);
+			break;
+		}
+		else if (straggler < *middle)
+		{
+			end = middle;
+		}
+		else
+		{
+			begin = ++middle;
+		}
+	}
+	if (begin == end)
+	s.insert(begin, straggler);
+	int swap = true;
+	while(swap == true)
+	{
+		swap = false;
+		for(std::list<int>::iterator it = s.begin(); it != s.end(); it++)
+		{
+			std::list<int>::iterator next_it = it;
+			next_it++;
+			if (next_it != s.end() && *it > *next_it)
+			{
+				int temp = *it;
+				*it = *next_it;
+				*next_it = temp;
+				swap = true;
+			}
+		}
+	}
+
+	print(s, "after", "s");
+	print_time_to_process("list");
+} */
+
+/* void PmergeMe::SortList(std::list<int> arr)
+{
+	std::list<std::pair<int, int> > pares;
+	std::list<std::pair<int, int> > sorted_pares;
+	int tmp = 0;
+	straggler = -1;
+	if (arr.size() <= 1)
+		return;
+
+	if ((arr.size() % 2) != 0)
+	{
+		straggler = arr.back();
+		//std::cout << "straggler: " << straggler << std::endl;
+		arr.pop_back();
+	}
+    for (std::list<int>::iterator it = arr.begin(); it != arr.end();)
+	{
+		pares.emplace_back(*it, *std::next(it));
+		it++;
+		it++;
+	}
+	for (std::list<int>::iterator it = arr.begin(); it != arr.end();)
+	{
+		pares.push_back(std::make_pair(*it, *(it++)));
+		it++;
+	}
+
+	for (std::list<std::pair<int, int> >::iterator it = pares.begin(); it != pares.end(); it++)
+	{
+		if (it->first > it->second)
+		{
+			tmp = it->first;
+			it->first = it->second;
+			it->second = tmp;
+		}
+	}
+	std::cout << std::endl;
+	while (pares.size() > 0)
+	{
+		tmp = 2147483647;
+		int tmp2 = 2147483647;
+		std::list<std::pair<int, int> >::iterator it;
+		std::list<std::pair<int, int> >::iterator it_tmp;
+		for (it = pares.begin(); it != pares.end(); it++)
+		{
+			if (tmp > it->second)
+			{
+				tmp = it->second;
+				tmp2 = it->first;
+				it_tmp = it;
+			}
+		}
+		//sorted_pares.emplace_back(tmp2, tmp);
+		sorted_pares.push_back(std::make_pair(tmp2, tmp));
+		pares.erase(it_tmp);
+		it = pares.begin();
+	}
+		//std::cout << "sorted_pares: " << std::endl;
+//        for (std::list<std::pair<int, int>>::iterator it = sorted_pares.begin(); it != sorted_pares.end(); it++)
+//		{
+//			std::cout << "(" << it->first << ", " << it->second << ")" << std::endl;
+//		}
+	std::cout << "llegas aquí" << std::endl;
+	Sortbypair(sorted_pares);
+} */
 
 void PmergeMe::SortDeque(std::deque<int> arr)
 {
@@ -189,6 +437,7 @@ void PmergeMe::SortDeque(std::deque<int> arr)
 				it_tmp = it;
 			}
 		}
+		//sorted_pares.emplace_back(tmp2, tmp);
 		sorted_pares.push_back(std::make_pair(tmp2, tmp));
 		pares.erase(it_tmp);
 		it = pares.begin();
@@ -201,6 +450,7 @@ void PmergeMe::SortDeque(std::deque<int> arr)
 	std::cout << "llegas aquí" << std::endl;
 	Sortbypair(sorted_pares);
 }
+
 
 std::vector<int> PmergeMe::build_jacob_insertion_sequence_vector(int lenght)
 {
@@ -236,6 +486,7 @@ void PmergeMe::Sortbypair_vector(std::vector<std::pair<int, int> > sorted_pares)
 
 	insertion_sequence = build_jacob_insertion_sequence_vector(pend.size());
 
+	std::cout << "por aqui si pasa" << std::endl;
 	int i = 0;
 	for (std::vector<int>::iterator it = pend.begin(); it != pend.end(); it++)
 	{
@@ -260,6 +511,7 @@ void PmergeMe::Sortbypair_vector(std::vector<std::pair<int, int> > sorted_pares)
 		}
 		i++;
 	}
+	std::cout << "estoy llegnado hasta aqui?" << std::endl;
 	std::vector<int>::iterator begin = s.begin();
 	std::vector<int>::iterator end = s.end();
 	while (begin != end && straggler != -1)
@@ -301,12 +553,11 @@ void PmergeMe::Sortbypair_vector(std::vector<std::pair<int, int> > sorted_pares)
 		}
 	}
 
-/* 	std::cout << "Vector ordenado: ";
+	std::cout << "Vector ordenado: ";
 	for (unsigned int i = 0; i < s.size(); i++) {
 		std::cout << s[i] << " ";
 	}
 	std::cout << std::endl;
-	*/
 	print_time_to_process("vector");
 }
 
@@ -324,6 +575,12 @@ void PmergeMe::SortVector(std::vector<int> vec)
 		straggler = vec.back();
 		vec.pop_back();
 	}
+/*     for (std::vector<int>::iterator it = vec.begin(); it != vec.end();)
+	{
+		pares.emplace_back(*it, *std::next(it));
+		it++;
+		it++;
+	} */
 	for (std::vector<int>::iterator it = vec.begin(); it != vec.end();)
 	{
 		pares.push_back(std::make_pair(*it, *(it + 1)));
@@ -355,6 +612,7 @@ void PmergeMe::SortVector(std::vector<int> vec)
 				it_tmp = it;
 			}
 		}
+		//sorted_pares.emplace_back(tmp2, tmp);
 		sorted_pares.push_back(std::make_pair(tmp2, tmp));
 		pares.erase(it_tmp);
 		it = pares.begin();
@@ -390,8 +648,10 @@ PmergeMe::PmergeMe(char **argv)
 		dq.push_back(tmp);
 		i++;
 	}
-	//print(dq, "before", "before");
-	SortDeque(dq);
+	print(dq, "before", "before");
+	//print(lst, "before", "before");
+	//SortList(lst);
+	SortList(dq);
 	start_time = clock();
 	i = 1;
 	while(argv[i] != NULL)
@@ -415,5 +675,5 @@ PmergeMe::PmergeMe(char **argv)
 		i++;
 	}
 	//print(vec, "before", "before");
-	SortVector(vec);
+	//SortVector(vec);
 }

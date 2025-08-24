@@ -140,7 +140,7 @@ void PmergeMe::Sortbypair(std::deque<std::pair<int, int> > sorted_pares)
 		}
 	}
 
-	//print(s, "after", "s");
+	print(s, "after", "s");
 	print_time_to_process("list");
 }
 
@@ -415,5 +415,5 @@ PmergeMe::PmergeMe(char **argv)
 		i++;
 	}
 	//print(vec, "before", "before");
-	SortVector(vec);
+	//SortVector(vec);
 }

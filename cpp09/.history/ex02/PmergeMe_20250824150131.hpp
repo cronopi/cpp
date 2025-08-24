@@ -14,7 +14,7 @@ class PmergeMe
 	private:
 		std::vector<int>	vec;
 		std::list<int>		lst;
-		std::deque<int>		dq;
+		std
 		int straggler;
 		clock_t start_time;
 
@@ -25,14 +25,10 @@ class PmergeMe
 		PmergeMe(const PmergeMe &copy);
 		PmergeMe &operator=(const PmergeMe &rhs);
 
-		//std::list<int> build_jacob_insertion_sequence(int length);
-		std::deque<int> build_jacob_insertion_sequence(int length);
+		std::list<int> build_jacob_insertion_sequence(int length);
 		PmergeMe(char **argv);
-		//void SortList(std::list<int> arr);
-		void SortDeque(std::deque<int> arr);
-		//void Sortbypair(std::list<std::pair<int, int> > sorted_pares);
-		void Sortbypair(std::deque<std::pair<int, int> > sorted_pares);
-
+		void SortList(std::list<int> arr);
+		void Sortbypair(std::list<std::pair<int, int> > sorted_pares);
 
 
 		template <typename Container>
